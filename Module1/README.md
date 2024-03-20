@@ -33,12 +33,12 @@ Now, let’s get our hands dirty!
 
 ## **Infrastructure deployment**
 
-In CDP Public Cloud, I’ve created a new environment called "fiserv-workshop" and deployed 4 Data Hubs :
+In CDP Public Cloud, we've created a new environment called "hol-workshop" and deployed 4 Data Hubs :
 
-- Flow Management Data Hub (NIFI) : fiserv-nifi
-- Streams Messaging Data Hub (KAFKA): fiserv-kafka
-- Streams Analytics Data Hub (FLINK/SSB) : fiserv-ssb
-- Real Time Data Warehouse Data Hub (Impala/Kudu) : fiserv-data
+- Flow Management Data Hub (NIFI) : hol-nifi
+- Streams Messaging Data Hub (KAFKA): hol-kafka
+- Streams Analytics Data Hub (FLINK/SSB) : hol-ssb
+- Real Time Data Warehouse Data Hub (Impala/Kudu) : hol-data
 
 ![](image2)
 

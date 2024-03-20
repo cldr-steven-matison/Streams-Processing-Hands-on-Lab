@@ -8,13 +8,13 @@
 3. Build out Fraud Demo Setup Instructions 
 4. Module0:  Build Out Readme
 5. Module1:  Finish Images
-6. Module2:  Build Out Instructions from project Repo
-7. Merge SSBDemo and SSB-Iceberg-Demo
+6. Module2:  Build Out Instructions from project Repo, ??? change use case from airline data to customer & fraud data tables??
+7. Merge SSBDemo and SSB-Iceberg-Demo, make root folder SSB-HOL-Fraud project folder HERE
 
 
 ## Modules
 
-### [Module 0: Getting Start HOL](/Module0/)
+### [Module 0: HOL Getting Started](/Module0/)
 
 ### [Module 1: Introduction to SQL Stream Builder](/Module1/)
 
@@ -25,7 +25,7 @@
 
 This section is only to be completed by the HOL Lead SE
 
-In CDP DEMOS Public Cloud, Fraud Demo has 4 datahubs below which you can refernce to copy assets, resources, compare configs, etc.   You should know this demo well before completing this HOL setup.
+In CDP DEMOS Public Cloud, Fraud Demo has 4 datahubs below which you can reference to copy assets, resources, compare configs, etc.   You should know this demo well before completing this HOL setup.
 
 In the go01-demo-aws environment:
 
@@ -36,17 +36,15 @@ In the go01-demo-aws environment:
 
 
 
-
 For this lab you will create an environment (in the marketing tenant) and the following 4 data hubs.
 
+ * Flow Management Data Hub (NIFI) : hol-nifi
+ * Streams Messaging Data Hub (KAFKA): hol-kafka
+ * Streams Analytics Data Hub (FLINK/SSB) : hol-ssb
+ * Real Time Data Warehouse Data Hub (Impala/Kudu) : hol-data
 
- * Flow Management Data Hub (NIFI) : go01-aws-nifi
- * Streams Messaging Data Hub (KAFKA): cdf-aw-kakfa-demo
- * Streams Analytics Data Hub (FLINK/SSB) : go01-flink-ssb 
- * Real Time Data Warehouse Data Hub (Impala/Kudu) : go01-datamart
 
-
-When complete you will need to enable Data Flow and deploy our sample data flow to deliver data to Kafka topics attendees will use in Module 1.
+When complete you will need to enable Data Flow on your environment and deploy our sample data flow to deliver data to Kafka topics attendees will use in Module 1.
 
 
 ## NiFi Flow Setup
@@ -56,20 +54,20 @@ When complete you will need to enable Data Flow and deploy our sample data flow 
 
 s3://go01-demo/fraud-ssb-demo/customer-data.csv
 
-[NiFi Flow Definition File]()
+[NiFi Flow Definition File](/linkto/file)
 
 [ High level instructions here for kafka setup ]
 
 ## Hue Database Setup
 
-Instructions here for any HUE DDL needed for default tables
+Instructions here for any HUE DDL needed for default tables.
 
 ## SQL Stream Builder Setup
 
-[ merge a SSB Project into this repo ]
+[ merge SSB Fraud and Iceberg Projects into this repo ]
 
 HOL Lead should import project and fully test ahead of live lab with attendees.
-
+All jobs should be operational.
 
 ## DATA Viz
 
