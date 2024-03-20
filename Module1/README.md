@@ -82,19 +82,19 @@ The generated transactional events will be ingested in apache Kafka.
 
 Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging Manager](image3)
 
-### **Setting up the sources**
+### **Setting Up Data Sources**
 
-Next we need to set up the sources and data catalogs in the Data provider section from Streaming SQL Console (remember to unlock your keytab when connecting first time to SSB Console):
+Next we need to set up the Data Sources and Data Catalogs in the Data Provider section from Streaming SQL Console:
 
-- Adding the Apache Kafka broker.
-- Adding the Schema Registry catalog
-- Adding the Kudu catalog.
+- Adding the Apache Kafka Cluster
+- Adding the Schema Registry Catalog
+- Adding the Kudu Catalog.
 
 ![10 SSB Data Providers](image4)
 
-### **Setting up the tables**
+### **Setting Up Virtual Tables**
 
-To start using SSB, we need to create tables. In SSB, a Table is a logical definition of the data source that includes the location and connection parameters, a schema, and any required, context specific configuration parameters. Tables can be used for both reading and writing data in most cases. You can create and manage tables either manually or they can be automatically loaded from one of the catalogs as specified using the Data Providers section(2).
+To start using SSB, we need to create some virtual tables. In SSB, a Virtual Table is a logical definition of the data source that includes the location and connection parameters, a schema, and any required, context for specific configuration parameters. Tables can be used for both reading and writing data in most cases. You can create and manage tables either manually or they can be automatically loaded from one of the catalogs as specified using the Data Providers section(2).
 
 A table defines the schema of events in a Kafka topic. For instance, we need to create 2 tables txn1 and txn2. SSB provides an easy way to create a table :
 
@@ -106,13 +106,20 @@ Make sure that you are using the Kafka timestamps and rename the "Event Time Col
 
 This creates a table called txn1 that points to events inside the txn1 Kafka topic. These events are in JSON format. It also defines an event_time field which is computed from the Apache Kafka Timestamps and defines a watermark of 3 seconds. Similarly, we need to create a txn2 table before using them in SSB.
 
-We are ready to query our tables: SELECT \* FROM txn1. It’s as easy as querying data in a SQL database. Here’s how this looks like in the SSB console. Events are continuously consumed from Apache Kafka and printed in the UI:
+We are ready to query our tables: 
+
+```
+
+SELECT * FROM txn1;
+
+```
+It’s as easy as querying data in a SQL database. Here’s how this looks like in the SSB console. Events are continuously consumed from Apache Kafka and printed in the UI:
 
 ![13 SSB Simple Select Query](image7)
 
 ### **Stream to Stream Joins**
 
-Remember, the objective here is to detect fraudulent transactions matching the following pattern, We will consider two transactions with the same "account_id" :
+Remember, the objective here is to detect fraudulent transactions matching the following pattern, we will consider two transactions with the same "account_id" :
 
 - Occurring in 2 different locations,
 - With a distance greater than 1 KM,
@@ -151,7 +158,7 @@ Now, we need to filter out :
 
 With SSB, we can create user functions (UDFs) to write functions in JavaScript. Since, there is no out-of-the box function in SSB to calculate the distance between 2 locations, let’s use the UDF feature in order to enhance the functionality of our query. More details on UDF are available [here](https://docs.cloudera.com/csa/1.6.1/ssb-using-js-functions/topics/csa-ssb-creating-js-functions.html)
 
-The Javascript function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula)
+The Javascript function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
 ```
 
@@ -249,10 +256,10 @@ JOIN \`srm-fraud-detection-KUDU\`.\`default_database\`.\`default.customers\` cus
 ON cus.acc_id = FRAUD.ACCOUNT_ID
 
 ```
-We can see from the output that all the fraudulent transactions are displayed in the SSB console.
+We can see from the output that all the fraudulent transactions are displayed in the SSB console:
 
 ![18 Stream To Stream Enrich](image12)
 
-From Hue, we can see that the results are written to the Apache Kudu table :
+From Hue, we can see that the results are written to the Apache Kudu Table :
 
 ![19 Stream To Stream Hue View Kudu Table](image13)
