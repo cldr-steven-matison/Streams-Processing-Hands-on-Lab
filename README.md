@@ -5,11 +5,11 @@
 ## Todo README
 1. Edit Env, and Data Hub Names, etc throughout all docs
 2. Build out copy paste links for Env, DataHubs, UIs, Etc
-3. Build out Fraud Demo Setup Instructions 
+3. Build out Fraud Demo Setup Instructions make a separate sub-page
 4. Module0:  Build Out Readme
 5. Module1:  Finish Images
 6. Module2:  Build Out Instructions for Iceberg Sample Queries
-7. Make SSB-HOL-Fraud project
+7. Make SSB-HOL-Fraud project from operational Project
 
 
 ## Modules
@@ -64,10 +64,8 @@ Instructions here for any HUE DDL needed for default tables.
 
 ## SQL Stream Builder Setup
 
-[ merge SSB Fraud and Iceberg Projects into this repo ]
-
 HOL Lead should import project and fully test ahead of live lab with attendees.
-All jobs should be operational.
+All jobs should be operational and not require any edits or modifications.
 
 ## DATA Viz
 

@@ -9,8 +9,7 @@ Open HUE UI and execute the following statement:
 
 ```javascript
 
--- CREATE DATABASES
--- EACH USER RUNS TO CREATE DATABASES
+-- CREATE ${user_id}_hol DATABASE
 CREATE DATABASE ${user_id}_hol;
 
 ```
@@ -21,14 +20,29 @@ Keep HUE open as it will be used for the SSB Time Travel job.
 
 ## Getting Started in SSB
 
-1. Fork this repo and import your repo as a project in Sql Stream Builder
-2. Within your project Create and Activate an Environment with a key value pair for your userid -> username
-6. Inspect/Add Data Sources.  You may need to re-add Kafka.  The Hive data source should work out of the box.
-7. Inspect/Add Virtual Kafka Tables.  You can edit the existing tables against your kafka data source and correct topics.  Just be sure to choose right topics and detect schema before save.
+1. Import the [SSB-HOL-Fraud Repo](https://github.com/cldr-steven-matison/Streams-Processing-Hands-on-Lab/tree/main/SSB-HOL-Fraud) as a project in your Sql Stream Builder.
+2. Within your project Create and Activate an Environment Variable with a key value pair for your userid -> username.
+6. Inspect/Add Data Sources.  You may need to re-add Kafka or Kudu Catalog Data Sources.  The Hive data source should work out of the box.
+7. Inspect/Add Virtual Kafka Tables.  Be sure to choose right topics and detect schema before Save will work.
+
+***
+
+## Execution of Jobs:
+
+Warning: These are not full ssb jobs.  These jobs are samples you execute each statements one at a time.
+
+1. Execute the SELECT * FROM [virtual table].  This will confirm that you have results for next step.  Be patient, if this is your first job may take some time (1-2 minutes) to report results.
+2. Execute the CREATE TABLE Statement.  This will create the virtual table in ssb_default namespace.  It will not create the table in IMPALA.
+3. Execute the INSERT INTO SELECT statement.   Be Patient.  This will create the impala table and begin reporting results shortly.  Stop the job after results are polling.
+4. Lastly, execute the final select.  These results are from IMPALA.
 
 ***
 
 ## Modifications to Jobs
+
+
+remove this if no notes needed per job
+
 
 Note:  current repo should not require any job modifications.
 
@@ -41,21 +55,12 @@ Note:  current repo should not require any job modifications.
 5. Time_Travel
  * Execute required DESCRIBE in Hue, use SnapShot Ids in SSB
 
-***
-
-## Execution of Jobs:
-
-Warning: These are not full ssb jobs.  In these are samples you execute each statements one at a time.
-
-1. Execute the SELECT * FROM [virtual table].  This will confirm that you have results for next step.  Be patient, if this is your first job may take some time (1-2 minutes) to report results.
-2. Execute the CREATE TABLE Statement.  This will create the virtual table in ssb_default namespace.  It will not create the table in IMPALA.
-3. Execute the INSERT INTO SELECT statement.   Be Patient.  This will create the impala table and begin reporting results shortly.
-4. Lastly, execute the final select.  These results are from IMPALA.
-
 
 ***
 
 ## Evaluating Results:
+
+Open HUE UI and execute the following statement:
 
 ```javascript
  
@@ -66,6 +71,8 @@ SELECT count(*) FROM ${user_id}_hol.`fraud_iceberg`;
 ```
 
 ## Time Travel With Iceberg
+
+Open HUE UI and execute the following statement:
 
 ```javascript
 
@@ -87,3 +94,4 @@ ALTER TABLE ${user_id}_hol.`fraud_iceberg`  EXECUTE ROLLBACK(2508721398088670959
 select count(*) from ${user_id}_hol.`fraud_iceberg` 
 -- 64964
 ```
+
