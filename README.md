@@ -8,8 +8,8 @@
 3. Build out Fraud Demo Setup Instructions 
 4. Module0:  Build Out Readme
 5. Module1:  Finish Images
-6. Module2:  Build Out Instructions from project Repo, ??? change use case from airline data to customer & fraud data tables??
-7. Merge SSBDemo and SSB-Iceberg-Demo, make root folder SSB-HOL-Fraud project folder HERE
+6. Module2:  Build Out Instructions for Iceberg Sample Queries
+7. Make SSB-HOL-Fraud project
 
 
 ## Modules
