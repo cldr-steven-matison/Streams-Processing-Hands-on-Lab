@@ -1,9 +1,9 @@
 {
-  "job_name" : "Time_Travel",
+  "job_name" : "Create_Iceberg_Table",
   "api_endpoints" : [ ],
-  "sql" : "-- First, get snapshots ids for the iceberg table\n/* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report\nDESCRIBE HISTORY fraudulent_txn_iceberg; \n*/\n\n-- Next, complete a basic select with snapshot-id\nselect * from fraudulent_txn_iceberg /*+OPTIONS('snapshot-id'='6619035083895556755')*/;\n\n-- Time travel 1 sec stream starting from snap-shot-id\nselect * from fraudulent_txn_iceberg /*+OPTIONS('streaming'='true', 'monitor-interval'='1s', 'start-snapshot-id'='4263825941508588099')*/;\n\n-- Select data from start snapshot to end snapshot\nselect * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='4263825941508588099', 'end-snapshot-id'='3724519465921078641')*/;\n\n-- Select data from starting timestamp\nselect * from fraudulent_txn_iceberg /*+OPTIONS('as-of-timestamp'='1699425703000')*/;",
+  "sql" : "DROP TABLE IF EXISTS `fraudulent_txn_iceberg`\nCREATE TABLE `fraudulent_txn_iceberg` (\n  `ts` STRING,\n  `account_id` STRING,\n  `transaction_id` STRING,\n  `first_name` STRING,\n  `last_name` STRING,\n  `email` STRING,\n  `phone` STRING,\n  `card` STRING,\n  `lat` STRING,\n  `lon` STRING,\n  `distance` STRING,\n  `amount` STRING\n) WITH (\n  'engine.hive.enabled' = 'true',\n  'catalog-database' = '${ssb.env.userid}_fraud',\n  'catalog-name' = 'hive',\n  'hive-conf-dir' = '/etc/hive/conf',\n  'connector' = 'iceberg',\n  'catalog-type' = 'hive'\n)\n\n\n",
   "mv_config" : {
-    "name" : "Time_Travel",
+    "name" : "Create_Iceberg_Table",
     "retention" : 300,
     "min_row_retention_count" : 0,
     "recreate" : false,
@@ -20,7 +20,7 @@
   "runtime_config" : {
     "execution_mode" : "SESSION",
     "parallelism" : 1,
-    "sample_interval" : 0,
+    "sample_interval" : 1000,
     "sample_count" : 100,
     "window_size" : 100,
     "start_with_savepoint" : false,

@@ -1,9 +1,9 @@
 {
-  "job_name" : "Time_Travel",
+  "job_name" : "Working_Insert_Iceberg",
   "api_endpoints" : [ ],
-  "sql" : "-- First, get snapshots ids for the iceberg table\n/* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report\nDESCRIBE HISTORY fraudulent_txn_iceberg; \n*/\n\n-- Next, complete a basic select with snapshot-id\nselect * from fraudulent_txn_iceberg /*+OPTIONS('snapshot-id'='6619035083895556755')*/;\n\n-- Time travel 1 sec stream starting from snap-shot-id\nselect * from fraudulent_txn_iceberg /*+OPTIONS('streaming'='true', 'monitor-interval'='1s', 'start-snapshot-id'='4263825941508588099')*/;\n\n-- Select data from start snapshot to end snapshot\nselect * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='4263825941508588099', 'end-snapshot-id'='3724519465921078641')*/;\n\n-- Select data from starting timestamp\nselect * from fraudulent_txn_iceberg /*+OPTIONS('as-of-timestamp'='1699425703000')*/;",
+  "sql" : "INSERT INTO fraudulent_txn_iceberg\nSELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)\nFROM (\nSELECT\ntxn1.ts as EVENT_TIME,\ntxn2.ts,\ntxn1.account_id as ACCOUNT_ID,\ntxn1.transaction_id AS TRANSACTION_ID,\ntxn2.transaction_id,\ntxn1.amount as AMOUNT,\ntxn1.lat AS LAT,\ntxn1.lon AS LON,\nHAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) as distance\nFROM txn1\nINNER JOIN txn2\non txn1.account_id=txn2.account_id\nwhere\ntxn1.transaction_id <> txn2.transaction_id\nAND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)\nAND txn1.ts < txn2.ts\nAND HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) > 1\nAND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time\n) FRAUD\nJOIN `Kudu`.`default_database`.`default.customers` cus\nON cus.account_id = FRAUD.ACCOUNT_ID",
   "mv_config" : {
-    "name" : "Time_Travel",
+    "name" : "Working_Insert_Iceberg",
     "retention" : 300,
     "min_row_retention_count" : 0,
     "recreate" : false,
@@ -20,7 +20,7 @@
   "runtime_config" : {
     "execution_mode" : "SESSION",
     "parallelism" : 1,
-    "sample_interval" : 0,
+    "sample_interval" : 1000,
     "sample_count" : 100,
     "window_size" : 100,
     "start_with_savepoint" : false,

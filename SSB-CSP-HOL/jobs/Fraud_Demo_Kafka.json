@@ -1,9 +1,8 @@
 {
-  "job_name" : "Airports_Kafka",
+  "job_name" : "Fraud_Demo_Kafka",
   "api_endpoints" : [ ],
-  "sql" : "-- First, execute line 2 to make sure you have kafka results\nSELECT * FROM airports_kafka;\n\n-- Second, create the ssb_default impala connector.\n-- DROP TABLE IF EXISTS airports_kafka_iceberg;\n-- -- If you drop this table, you may have to drop the impala table in hive with Hue\nCREATE TABLE `airports_kafka_iceberg` (\n  `name_translations` ROW<`en` VARCHAR(2147483647)>,\n  `city_code` VARCHAR(2147483647),\n  `country_code` VARCHAR(2147483647),\n  `time_zone` VARCHAR(2147483647),\n  `code` VARCHAR(2147483647),\n  `iata_type` VARCHAR(2147483647),\n  `name` VARCHAR(2147483647),\n  `coordinates` ROW<`lat` DOUBLE, `lon` DOUBLE>,\n  `flightable` BOOLEAN,\n  `eventTimestamp` TIMESTAMP(3)\n) WITH \n( 'connector' = 'iceberg', 'catalog-database' = '${ssb.env.userid}_airlines', 'catalog-table' = 'airports_kafka_iceberg', 'catalog-type' = 'hive', 'catalog-name' = 'Hive', 'engine.hive.enabled' = 'true', 'hive-conf-dir' = '/etc/hive/conf');\n\n-- Third, insert select the kafka results.\nINSERT INTO airports_kafka_iceberg SELECT * FROM airports_kafka;\n\n-- Fourth, select from the impala connector to see results from iceberg.\nSELECT * FROM airports_kafka_iceberg;",
   "mv_config" : {
-    "name" : "Airports_Kafka",
+    "name" : "Fraud_Demo_Kafka",
     "retention" : 300,
     "min_row_retention_count" : 0,
     "recreate" : false,
@@ -20,7 +19,7 @@
   "runtime_config" : {
     "execution_mode" : "SESSION",
     "parallelism" : 1,
-    "sample_interval" : 0,
+    "sample_interval" : 1000,
     "sample_count" : 100,
     "window_size" : 100,
     "start_with_savepoint" : false,

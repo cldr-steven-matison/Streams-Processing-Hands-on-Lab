@@ -1,0 +1,18 @@
+{
+  "metadata" : {
+    "engine.hive.enabled" : "true",
+    "hive-conf-dir" : "/etc/hive/conf",
+    "connector" : "iceberg",
+    "schema.0.data-type" : "INT",
+    "catalog-database" : "default",
+    "catalog-table" : "iceberg_hive",
+    "catalog-type" : "hive",
+    "schema.1.name" : "column_str",
+    "catalog-name" : "Hive",
+    "schema.0.name" : "column_int",
+    "schema.1.data-type" : "VARCHAR(2147483647)"
+  },
+  "type" : "ssb",
+  "table_name" : "iceberg_hive",
+  "transform_code_b64_encoded" : false
+}

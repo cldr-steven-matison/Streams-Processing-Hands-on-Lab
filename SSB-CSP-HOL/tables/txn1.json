@@ -1,0 +1,43 @@
+{
+  "metadata" : {
+    "schema.0.data-type" : "VARCHAR(2147483647)",
+    "schema.1.name" : "account_id",
+    "scan.startup.mode" : "earliest-offset",
+    "schema.4.name" : "lat",
+    "schema.3.data-type" : "BIGINT",
+    "schema.6.metadata" : "timestamp",
+    "schema.3.name" : "amount",
+    "properties.request.timeout.ms" : "120000",
+    "schema.watermark.0.strategy.data-type" : "TIMESTAMP(3)",
+    "schema.6.name" : "event_time",
+    "schema.5.data-type" : "DOUBLE",
+    "schema.6.virtual" : "false",
+    "schema.0.name" : "ts",
+    "schema.5.name" : "lon",
+    "schema.watermark.0.strategy.expr" : "`event_time` - INTERVAL '3' SECOND",
+    "properties.auto.offset.reset" : "earliest",
+    "schema.2.name" : "transaction_id",
+    "format" : "json",
+    "schema.6.data-type" : "TIMESTAMP(3) WITH LOCAL TIME ZONE",
+    "schema.1.data-type" : "VARCHAR(2147483647)",
+    "connector" : "kafka: Kafka",
+    "schema.2.data-type" : "VARCHAR(2147483647)",
+    "schema.watermark.0.rowtime" : "event_time",
+    "properties.transaction.timeout.ms" : "900000",
+    "topic" : "txn1",
+    "schema.4.data-type" : "DOUBLE",
+    "ssb.schema.text" : "{\n  \"type\": \"record\",\n  \"name\": \"inferredSchema\",\n  \"fields\": [\n    {\n      \"name\": \"ts\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2024-03-25 13:36:47\\\"'\"\n    },\n    {\n      \"name\": \"account_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"883\\\"'\"\n    },\n    {\n      \"name\": \"transaction_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"ba73585e-eaac-11ee-ba8c-ba889c05026e\\\"'\"\n    },\n    {\n      \"name\": \"amount\",\n      \"type\": \"long\",\n      \"doc\": \"Type inferred from '456'\"\n    },\n    {\n      \"name\": \"lat\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '45.7578137'\"\n    },\n    {\n      \"name\": \"lon\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '4.8320114'\"\n    }\n  ]\n}",
+    "ssb.watermark_spec" : {
+      "timestamp_column" : "__ssb_kafka_timestamp",
+      "watermark_seconds" : null,
+      "rowtime_column" : "event_time"
+    },
+    "ssb.properties" : {
+      "auto.offset.reset" : "earliest"
+    }
+  },
+  "type" : "ssb",
+  "table_name" : "txn1",
+  "transform_code_b64_encoded" : false,
+  "transform_code" : ""
+}
