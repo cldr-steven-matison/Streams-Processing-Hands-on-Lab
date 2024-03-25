@@ -95,15 +95,75 @@ CREATE DATABASE ${user_id}_fraud;
 -- CREATE transactions TABLE
 CREATE TABLE ${user_id}_fraud.transactions
 (
-  ts string,
-  acc_id string,
-  transaction_id string,
-  amount bigint,
-  lat double,
-  lon double,
-  PRIMARY KEY (ts, acc_id)
+event_time string,
+acc_id string,
+transaction_id string,
+f_name string,
+l_name string,
+email string,
+gender string,
+phone string,
+card string,
+lat double,
+lon double,
+amount bigint,
+PRIMARY KEY (event_time, acc_id)
 )
 STORED AS ICEBERG;
+
+
+create TABLE fraudulent_txn
+(
+event_time string,
+acc_id string,
+transaction_id string,
+f_name string,
+l_name string,
+email string,
+gender string,
+phone string,
+card string,
+lat double,
+lon double,
+amount bigint,
+PRIMARY KEY (event_time, acc_id)
+)
+PARTITION BY HASH PARTITIONS 16
+STORED AS KUDU
+TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
+
+
+CREATE external TABLE customer_temp
+(
+acc_id string,
+f_name string,
+l_name string,
+email string,
+gender string,
+phone string,
+card string)
+
+ROW FORMAT DELIMITED FIELDS TERMINATED BY ","
+STORED AS TEXTFILE;
+
+LOAD DATA INPATH 'hdfs://user/steven.matison/01_Customer_Data.csv' INTO TABLE default.customer_temp
+-- i had issues with this, used hue imported, had issues here ,but after many attempts the database was created and users are existing
+
+select * from 01_customer_data;
+
+
+CREATE TABLE customers
+PRIMARY KEY (account_id)
+PARTITION BY HASH PARTITIONS 16
+STORED AS KUDU
+TBLPROPERTIES ('kudu.num_tablet_replicas' = '3')
+AS select  *  from 01_customer_data;
+
+select * from customers;
+
+
+-- i had issues here with account_id data type...  had to do some other temp tables and some select cast(account_id as string) in the inserts..
+
 
 ```
 

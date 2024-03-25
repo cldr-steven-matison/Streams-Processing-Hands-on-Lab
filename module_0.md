@@ -6,17 +6,22 @@ This page should be written to identifiy all of the items a new attendee should 
 ## Copy Paste Boared
 
 
-### Kafka Brokers:
-
 ### Workload Password:
 
 #P7dFpyAe@Gttd#
+
+### Kafka Brokers:
 
 csp-hol-kafka-corebroker0.se-sandb.a465-9q4k.cloudera.site:9093,csp-hol-kafka-corebroker1.se-sandb.a465-9q4k.cloudera.site:9093,csp-hol-kafka-corebroker2.se-sandb.a465-9q4k.cloudera.site:9093
 
 ### Schema Registry URL:
 
 https://csp-hol-kafka-master0.se-sandb.a465-9q4k.cloudera.site:7790/api/v1
+
+
+### Kudu Masters
+
+csp-hol-kudu-master10.se-sandb.a465-9q4k.cloudera.site:7051,csp-hol-kudu-master20.se-sandb.a465-9q4k.cloudera.site:7051,csp-hol-kudu-master30.se-sandb.a465-9q4k.cloudera.site:7051
 
 
 ## Warnings
