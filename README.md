@@ -11,9 +11,10 @@
 6. Module 2:  Build Out Instructions for Iceberg Sample Queries
 7. Build SSB-HOL-Fraud project
 
-### Setup
+## Setup
 
 ### [HOL Setup](setup.md)
+
 ## Modules
 
 ### [Module 0: HOL Getting Started](module_0.md)
@@ -21,3 +22,4 @@
 ### [Module 1: Introduction to SQL Stream Builder](module_1.md)
 
 ### [Module 2: Introduction to Apache Iceberg with SQL Stream Builder](module_2.md)
+
