@@ -1,1 +1,0 @@
-# Sql Stream Builder Hands on Lab Sample Project

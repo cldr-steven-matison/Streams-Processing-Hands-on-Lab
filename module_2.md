@@ -1,6 +1,6 @@
-# Introduction to SQL Stream Builder
+# Introduction to Apache Iceberg with SQL Stream Builder
  
-In this module we are going to work with SSB and new capabilities with [Apache Iceberg](https://iceberg.apache.org/).
+In this module we are going to work with SSB and some new capabilities with [Apache Iceberg](https://iceberg.apache.org/) found with CSA 1.11 and CDP 7.1.9.
 
 
 ## Initial Setups
@@ -18,7 +18,7 @@ Keep HUE open as it will be used for the SSB Time Travel job.
 
 ***
 
-## Getting Started in SSB
+## Create Iceberg Jobs in SSB
 
 1. Within your project Create and Activate an Environment Variable with a key value pair for your userid -> username.
 2. Create CSA 1.11 Sample Job
@@ -28,7 +28,7 @@ Keep HUE open as it will be used for the SSB Time Travel job.
 
 ***
 
-## Execution of Jobs:
+## Execution of Job Statements:
 
 Warning: These are not full ssb jobs.  These jobs are samples you execute each statements one at a time.
 
@@ -39,7 +39,7 @@ Warning: These are not full ssb jobs.  These jobs are samples you execute each s
 
 ***
 
-## Evaluating Results:
+## Evaluating Job Results:
 
 Open HUE UI and execute the following statement:
 

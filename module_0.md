@@ -2,6 +2,23 @@
 
 This page should be written to identifiy all of the items a new attendee should be aware of.
 
+
+## Copy Paste Boared
+
+
+### Kafka Brokers:
+
+### Workload Password:
+
+#P7dFpyAe@Gttd#
+
+csp-hol-kafka-corebroker0.se-sandb.a465-9q4k.cloudera.site:9093,csp-hol-kafka-corebroker1.se-sandb.a465-9q4k.cloudera.site:9093,csp-hol-kafka-corebroker2.se-sandb.a465-9q4k.cloudera.site:9093
+
+### Schema Registry URL:
+
+https://csp-hol-kafka-master0.se-sandb.a465-9q4k.cloudera.site:7790/api/v1
+
+
 ## Warnings
 	Personal Laptop
 	Disable VPNs
@@ -12,6 +29,8 @@ This page should be written to identifiy all of the items a new attendee should 
 ## How to Login to Cloudera Public Cloud
 
 ## How to use Menu's (TILES, LEFT NAV, ETC)
+
+## How to find Data Hub UIs (Hue, Schema Registry, Streams Messaging Manager, Sql Stream Builder)
 
 ## Workload Password Setup
 
