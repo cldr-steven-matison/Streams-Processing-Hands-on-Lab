@@ -160,7 +160,7 @@ select card, sum(amount) from ${user_id}_fraud.`fraudulent_txn_iceberg` GROUP BY
 
 Now that we have some snapshot ids and basic understanding of time travel with iceberg, lets create the Time_Travel Job:
 
-``` javascxript
+``` javascript
 
 -- First, get snapshots ids for the iceberg table
 /* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report
