@@ -35,10 +35,10 @@ Now, let’s get our hands dirty!
 
 In CDP Public Cloud, we've created a new environment called "hol-workshop" and deployed 4 Data Hubs :
 
-- Flow Management Data Hub (NIFI) : hol-nifi
-- Streams Messaging Data Hub (KAFKA): hol-kafka
-- Streams Analytics Data Hub (FLINK/SSB) : hol-ssb
-- Real Time Data Warehouse Data Hub (Impala/Kudu) : hol-data
+ * Flow Management Data Hub (NIFI) : csp-hol-nifi
+ * Streams Messaging Data Hub (KAFKA): csp-hol-kafka
+ * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
+ * Real Time Data Warehouse Data Hub (Impala/Kudu) : csp-hol-kudu
 
 ![](image2)
 

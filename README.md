@@ -7,13 +7,13 @@
 2. Build out copy paste links for Env, DataHubs, UIs, Etc
 3. Build out setup.md
 4. Module 0:  Build Out Readme
-5. Module 1:  Finish Images, Fix \ slashes in query code
+5. Module 1:  Finish Images, Fix \ slashes in query code, Modify Kudu to Iceberg, need to get customer database
 6. Module 2:  Build Out Instructions for Iceberg Sample Queries
 7. Build SSB-HOL-Fraud project
 
 ## Setup
 
-### [HOL Setup](setup.md)
+### [HOL Setup Instructions](setup.md)
 
 ## Modules
 

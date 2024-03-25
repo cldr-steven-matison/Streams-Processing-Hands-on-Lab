@@ -45,9 +45,9 @@ Open HUE UI and execute the following statement:
 
 ```javascript
  
-SELECT * FROM ${user_id}_hol.`fraud_iceberg`;
+SELECT * FROM ${user_id}_fraud.`transactions`;
 
-SELECT count(*) FROM ${user_id}_hol.`fraud_iceberg`;
+SELECT count(*) FROM ${user_id}_fraud.`transactions`;
 
 ```
 
@@ -55,24 +55,46 @@ SELECT count(*) FROM ${user_id}_hol.`fraud_iceberg`;
 
 Open HUE UI and execute the following statement:
 
-```javascript
+``` javascript
 
-DESCRIBE HISTORY ${user_id}_hol.`fraud_iceberg`;
--- Take one old and one newer snapshot id
+-- Describe Table
+DESCRIBE FORMATTED ${user_id}_fraud.`transactions`; 
 
--- Get Count as of SnapShot 1
-select count(*) from ${user_id}_hol.`fraud_iceberg` FOR SYSTEM_VERSION AS OF 2508721398088670959
--- 64964
+-- Get Current Count
+select count(*) from ${user_id}_fraud.`transactions`
+ -- 1456146
 
+-- Get Snap Shot Ids
+DESCRIBE HISTORY ${user_id}_fraud.`transactions`
+-- copy 2 ids,  one older than the other
+
+-- Get Totals Per Card Type As of SnapShot 1 
+select card, sum(amount) from ${user_id}_fraud.`transactions` FOR SYSTEM_VERSION AS OF 2163411949573389139 GROUP BY card
+  -- mastercard	      103930672
+  -- americanexpress	105070827
+  -- visa	            104719497
+
+-- Get Totals Per Card Type As of SnapShot 2
+select card, sum(amount) from ${user_id}_fraud.`transactions` FOR SYSTEM_VERSION AS OF 2013237884718568734 GROUP BY card
+  -- mastercard	      116812083
+  -- americanexpress	115538225
+  -- visa	            116185432
+ 
 -- Get Count as of SnapShot 2  
-select count(*) from ${user_id}_hol.`fraud_iceberg` FOR SYSTEM_VERSION AS OF 1360529202097334446
--- 129928
+select count(*) from ${user_id}_fraud.`transactions` FOR SYSTEM_VERSION AS OF 2013237884718568734  
+ -- 348732
+ 
+-- Roll back to Snapshot 2
+ALTER TABLE ${user_id}_fraud.`transactions` EXECUTE ROLLBACK(2013237884718568734);
 
--- Roll back to Snapshot 1
-ALTER TABLE ${user_id}_hol.`fraud_iceberg`  EXECUTE ROLLBACK(2508721398088670959);
+-- Confirm current table Count is Correct
+select count(*) from ${user_id}_fraud.`transactions`
+ -- 348732
+ 
+-- Show Database Totals match Query Line 15
+select card, sum(amount) from ${user_id}_fraud.`transactions` GROUP BY card 
+  -- mastercard	      116812083
+  -- americanexpress	115538225
+  -- visa	            116185432
 
--- Show Count is from Snapshot 1
-select count(*) from ${user_id}_hol.`fraud_iceberg` 
--- 64964
 ```
-
