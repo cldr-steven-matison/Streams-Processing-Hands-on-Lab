@@ -17,7 +17,7 @@ CREATE TABLE `iceberg_hive` (
 `column_int` INT,
 `column_str` STRING
 ) WITH (
-  'catalog-database' = 'default',
+  'catalog-database' = '${ssb.env.userid}_fraud',
   'connector' = 'iceberg',
   'catalog-type' = 'hive',
   'catalog-name' = 'iceberg_hive_catalog',
