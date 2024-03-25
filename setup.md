@@ -13,9 +13,8 @@ In the go01-demo-aws environment:
 
 
 
-For this lab you will create an environment (in the marketing tenant) and the following 4 data hubs.
+For this lab you will create an environment (in the marketing tenant) and the following Data Hubs:
 
- * Flow Management Data Hub (NIFI) : csp-hol-nifi
  * Streams Messaging Data Hub (KAFKA): csp-hol-kafka
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
  * Real Time Data Warehouse Data Hub (Impala/Kudu) : csp-hol-kudu
@@ -72,15 +71,13 @@ Add the following schema to the Schema Registry
 [ screen shot ]
 
 
-s3://go01-demo/fraud-ssb-demo/customer-data.csv
-
 [NiFi Flow Definition File](/assets/Fraud_Detection_Demo_Dataflow.json)
 
 You can deploy this flow in a Nifi Data Hub or in Dataflow.  The setup should be same, you just need to provide the appropriate parameters.
 
 [ screen shot of deployment parameters]
 
-After running the flow for a few minutes, confirm you are seeing data in both Kafka Topics: txn1 and txn2
+After running the flow for a few minutes, confirm you are seeing data in both Kafka Topics: txn1 and txn2.
 
 ## Hue Database Setup
 
@@ -93,7 +90,7 @@ Instructions here for any HUE DDL needed for default tables.
 CREATE DATABASE ${user_id}_fraud;
 
 -- CREATE transactions TABLE
-CREATE TABLE ${user_id}_fraud.transactions
+CREATE TABLE ${user_id}_fraud.fraudulent_txn_iceberg
 (
 event_time string,
 acc_id string,
@@ -112,7 +109,7 @@ PRIMARY KEY (event_time, acc_id)
 STORED AS ICEBERG;
 
 
-create TABLE fraudulent_txn
+create TABLE ${user_id}_fraud.fraudulent_txn_kudu
 (
 event_time string,
 acc_id string,
@@ -146,8 +143,9 @@ card string)
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ","
 STORED AS TEXTFILE;
 
-LOAD DATA INPATH 'hdfs://user/steven.matison/01_Customer_Data.csv' INTO TABLE default.customer_temp
--- i had issues with this, used hue imported, had issues here ,but after many attempts the database was created and users are existing
+LOAD DATA INPATH '' INTO TABLE default.customer_temp
+
+-- i had issues with this, used hue imported, had issues here ,but after several attempts the database was created and users are existing.
 
 select * from 01_customer_data;
 
@@ -171,6 +169,8 @@ select * from customers;
 
 HOL Lead should import project and fully test ahead of live lab with attendees.
 All jobs should be operational and not require any edits or modifications.
+
+-- i need to test this
 
 ## DATA Viz
 

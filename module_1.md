@@ -33,9 +33,8 @@ Now, let’s get our hands dirty!
 
 ## **Infrastructure deployment**
 
-In CDP Public Cloud, we've created a new environment called "hol-workshop" and deployed 4 Data Hubs :
+In CDP Public Cloud, we've created a new environment called "hol-workshop" and deployed Data Hubs:
 
- * Flow Management Data Hub (NIFI) : csp-hol-nifi
  * Streams Messaging Data Hub (KAFKA): csp-hol-kafka
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
  * Real Time Data Warehouse Data Hub (Impala/Kudu) : csp-hol-kudu
@@ -82,6 +81,59 @@ The generated transactional events will be ingested in apache Kafka.
 
 Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging Manager](image3)
 
+## Hue Database Setup
+
+Instructions here for any HUE DDL needed for default tables.
+
+``` javascript
+
+
+-- CREATE userid_fraud DATABASE
+CREATE DATABASE ${user_id}_fraud;
+
+-- CREATE transactions TABLE
+CREATE TABLE ${user_id}_fraud.fraudulent_txn_iceberg
+(
+event_time string,
+acc_id string,
+transaction_id string,
+f_name string,
+l_name string,
+email string,
+gender string,
+phone string,
+card string,
+lat double,
+lon double,
+amount bigint,
+PRIMARY KEY (event_time, acc_id)
+)
+STORED AS ICEBERG;
+
+
+create TABLE ${user_id}_fraud.fraudulent_txn_kudu
+(
+event_time string,
+acc_id string,
+transaction_id string,
+f_name string,
+l_name string,
+email string,
+gender string,
+phone string,
+card string,
+lat double,
+lon double,
+amount bigint,
+PRIMARY KEY (event_time, acc_id)
+)
+PARTITION BY HASH PARTITIONS 16
+STORED AS KUDU
+TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
+
+
+```
+
 ### **Setting Up Data Sources**
 
 Next we need to set up the Data Sources and Data Catalogs in the Data Provider section from Streaming SQL Console:
@@ -108,7 +160,7 @@ This creates a table called txn1 that points to events inside the txn1 Kafka top
 
 We are ready to query our tables: 
 
-```
+``` javascript
 
 SELECT * FROM txn1;
 
@@ -127,7 +179,7 @@ Remember, the objective here is to detect fraudulent transactions matching the f
 
 To do so, let’s first join the txn1 and txn2 streams on attribute transaction_id:
 
-```
+``` javascript
 
 SELECT
 txn1.ts as EVENT_TIME,
@@ -160,7 +212,7 @@ With SSB, we can create user functions (UDFs) to write functions in JavaScript. 
 
 The Javascript function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
-```
+``` javascript
 
 // Haversine distance calculator
 function HAVETOKM(lat1,lon1,lat2,lon2) {
@@ -192,7 +244,7 @@ From SSB Console :
 
 Now, let’s run our query that implements our pattern :
 
-```
+``` javascript
 
 SELECT
 txn1.ts as EVENT_TIME,
@@ -218,19 +270,17 @@ AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.even
 
 ![16 SSB Stream To Stream Joins Filter Out](image10)
 
-### **Stream to Stream Joins and enrichment**
+### **Stream to Stream Joins and Enrichment**
 
-In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in another Apache Kudu table called "fraudulent_txn".
+In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in an Apache Iceberg table called "fraudulent_txn_iceberg".
 
-SQL Stream Builder can also take keyed snapshots of the data stream and make that available through a REST interface in the form of Materialized Views. We will define an MV before running the query :
 
-![17 SSB Stream To Stream Enrich MV](image11)
-
+f
 Now, let’s run the query:
-```
+``` javascript
 
-INSERT INTO \`srm-fraud-detection-KUDU\`.\`default_database\`.\`default.fraudulent_txn\`
-SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.f_name as FIRST_NAME ,cus.l_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , LAT, LON, AMOUNT
+INSERT INTO fraudulent_txn_iceberg
+SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)
 FROM (
 SELECT
 txn1.ts as EVENT_TIME,
@@ -247,18 +297,22 @@ INNER JOIN txn2
 on txn1.account_id=txn2.account_id
 where
 txn1.transaction_id <> txn2.transaction_id
-AND (txn1.lat &lt;> txn2.lat OR txn1.lon <&gt; txn2.lon)
+AND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)
 AND txn1.ts < txn2.ts
 AND HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) > 1
 AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
 ) FRAUD
-JOIN \`srm-fraud-detection-KUDU\`.\`default_database\`.\`default.customers\` cus
-ON cus.acc_id = FRAUD.ACCOUNT_ID
+JOIN `Kudu`.`default_database`.`default.customers` cus
+ON cus.account_id = FRAUD.ACCOUNT_ID
 
 ```
 We can see from the output that all the fraudulent transactions are displayed in the SSB console:
 
 ![18 Stream To Stream Enrich](image12)
+
+SQL Stream Builder can also take keyed snapshots of the data stream and make that available through a REST interface in the form of Materialized Views. We will define an MV before running the query :
+
+![17 SSB Stream To Stream Enrich MV](image11)
 
 From Hue, we can see that the results are written to the Apache Kudu Table :
 
