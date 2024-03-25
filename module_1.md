@@ -91,27 +91,7 @@ Instructions here for any HUE DDL needed for default tables.
 -- CREATE userid_fraud DATABASE
 CREATE DATABASE ${user_id}_fraud;
 
--- CREATE transactions TABLE
-CREATE TABLE ${user_id}_fraud.fraudulent_txn_iceberg
-(
-event_time string,
-acc_id string,
-transaction_id string,
-f_name string,
-l_name string,
-email string,
-gender string,
-phone string,
-card string,
-lat double,
-lon double,
-amount bigint,
-PRIMARY KEY (event_time, acc_id)
-)
-STORED AS ICEBERG;
-
-
-create TABLE ${user_id}_fraud.fraudulent_txn_kudu
+CREATE TABLE ${user_id}_fraud.fraudulent_txn_kudu
 (
 event_time string,
 acc_id string,
@@ -272,14 +252,13 @@ AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.even
 
 ### **Stream to Stream Joins and Enrichment**
 
-In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in an Apache Iceberg table called "fraudulent_txn_iceberg".
+In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in another Kudu table called "fraudulent_txn_iceberg".
 
-
-f
 Now, let’s run the query:
+
 ``` javascript
 
-INSERT INTO fraudulent_txn_iceberg
+INSERT INTO fraudulent_txn_kudu
 SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)
 FROM (
 SELECT

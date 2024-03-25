@@ -89,26 +89,6 @@ Instructions here for any HUE DDL needed for default tables.
 -- CREATE userid_fraud DATABASE
 CREATE DATABASE ${user_id}_fraud;
 
--- CREATE transactions TABLE
-CREATE TABLE ${user_id}_fraud.fraudulent_txn_iceberg
-(
-event_time string,
-acc_id string,
-transaction_id string,
-f_name string,
-l_name string,
-email string,
-gender string,
-phone string,
-card string,
-lat double,
-lon double,
-amount bigint,
-PRIMARY KEY (event_time, acc_id)
-)
-STORED AS ICEBERG;
-
-
 create TABLE ${user_id}_fraud.fraudulent_txn_kudu
 (
 event_time string,
