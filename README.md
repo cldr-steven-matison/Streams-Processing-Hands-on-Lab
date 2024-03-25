@@ -7,9 +7,9 @@
 2. Build out copy paste links for Env, DataHubs, UIs, Etc
 3. Build out setup.md
 4. Module 0:  Build Out Readme
-5. Module 1:  Finish Images, Fix \ slashes in query code, Modify Kudu to Iceberg, need to get customer database
-6. Module 2:  Build Out Instructions for Iceberg Sample Queries
-7. Build SSB-HOL-Fraud project
+5. Module 1:  Finish Images
+6. Module 2:  Need a way to trigger some new snapshots on iceberg, f or example lets delete some transactions, then restore to point before deleting??
+7. SSB-HOL-Fraud project:  test full new deploy
 
 ## Setup
 

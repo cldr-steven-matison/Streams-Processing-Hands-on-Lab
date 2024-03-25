@@ -32,6 +32,7 @@ INSERT INTO iceberg_hive(column_int,column_str) VALUES (1,'test2');
 Select * from iceberg_hive;
 
 ```
+  Note: Execute the 3 statements individually.  If all 3 statements work, you have a working setup and are ready to go into the next Jobs.
 
 3. Create Create_Iceberg_Table Job
 
@@ -104,9 +105,12 @@ SELECT count(*) FROM ${user_id}_fraud.`fraudulent_txn_iceberg`;
 
 ```
 
+[ insert some instructions to delete some data ]
 
 
 5. Create Time_Travel Job
+
+In Hue execute the following statements one at a time:
 
 ``` javascript
 
@@ -151,6 +155,29 @@ select card, sum(amount) from ${user_id}_fraud.`fraudulent_txn_iceberg` GROUP BY
   -- americanexpress  115538225
   -- visa             116185432
 
+
+```
+
+Now that we have some snapshot ids and basic understanding of time travel with iceberg, lets create the Time_Travel Job:
+
+``` javascxript
+
+-- First, get snapshots ids for the iceberg table
+/* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report
+DESCRIBE HISTORY fraudulent_txn_iceberg; 
+*/
+
+-- Next, complete a basic select with snapshot-id
+select * from fraudulent_txn_iceberg /*+OPTIONS('snapshot-id'='6619035083895556755')*/;
+
+-- Time travel 1 sec stream starting from snap-shot-id
+select * from fraudulent_txn_iceberg /*+OPTIONS('streaming'='true', 'monitor-interval'='1s', 'start-snapshot-id'='4263825941508588099')*/;
+
+-- Select data from start snapshot to end snapshot
+select * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='4263825941508588099', 'end-snapshot-id'='3724519465921078641')*/;
+
+-- Select data from starting timestamp
+select * from fraudulent_txn_iceberg /*+OPTIONS('as-of-timestamp'='1699425703000')*/;
 
 ```
 ***
