@@ -49,8 +49,9 @@ The data model will describe how data is generated and stored. In our fraud dete
 
 ##### **Valid transaction**
 
-```{
+```
 
+{
 'ts': '2013-11-08T10:58:19.668225',
 'account_id': 'a335',
 'transaction_id': '636adacc-49d2-11e3-a3d1-a820664821e3'
@@ -65,8 +66,9 @@ The script will also stream a fraudulent transaction with the same account ID as
 
 ##### **Fraudulent transaction**
 
-```{
+```
 
+{
 'ts': '2013-11-08T12:28:39.466325',
 'account_id': 'a335',
 'transaction_id': 'xxx636adacc-49d2-11e3-a3d1-a820664821e3'
@@ -86,8 +88,6 @@ Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging
 Instructions here for any HUE DDL needed for default tables.
 
 ``` javascript
-
-
 -- CREATE userid_fraud DATABASE
 CREATE DATABASE ${user_id}_fraud;
 
@@ -110,9 +110,13 @@ PRIMARY KEY (event_time, acc_id)
 PARTITION BY HASH PARTITIONS 16
 STORED AS KUDU
 TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
-
-
 ```
+
+## Sql Stream Builder
+
+ Intro paragraph
+
+ ![09.5 Intro to SSB](/Images/Intro_SSB.png)
 
 ### **Setting Up Data Sources**
 
@@ -141,9 +145,7 @@ This creates a table called txn1 that points to events inside the txn1 Kafka top
 We are ready to query our tables: 
 
 ``` javascript
-
 SELECT * FROM txn1;
-
 ```
 It’s as easy as querying data in a SQL database. Here’s how this looks like in the SSB console. Events are continuously consumed from Apache Kafka and printed in the UI:
 
@@ -160,7 +162,6 @@ Remember, the objective here is to detect fraudulent transactions matching the f
 To do so, let’s first join the txn1 and txn2 streams on attribute transaction_id:
 
 ``` javascript
-
 SELECT
 txn1.ts as EVENT_TIME,
 txn2.ts,
@@ -173,7 +174,6 @@ txn1.lon AS LON
 FROM txn1
 INNER JOIN txn2
 on txn1.account_id=txn2.account_id
-
 ```
 
 The output from SSB console:
@@ -193,7 +193,6 @@ With SSB, we can create user functions (UDFs) to write functions in JavaScript. 
 The Javascript function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
 ``` javascript
-
 // Haversine distance calculator
 function HAVETOKM(lat1,lon1,lat2,lon2) {
 function toRad(x) {
@@ -215,7 +214,6 @@ return (d).toFixed(2).toString();
 }
 
 HAVETOKM($p0, $p1, $p2, $p3);
-
 ```
 
 From SSB Console :
@@ -225,7 +223,6 @@ From SSB Console :
 Now, let’s run our query that implements our pattern :
 
 ``` javascript
-
 SELECT
 txn1.ts as EVENT_TIME,
 txn2.ts,
@@ -245,7 +242,6 @@ AND (txn1.lat &lt;> txn2.lat OR txn1.lon <&gt; txn2.lon)
 AND txn1.ts < txn2.ts
 AND HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) > 1
 AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
-
 ```
 
 ![16 SSB Stream To Stream Joins Filter Out](/Images/16_SSB_Stream_To_Stream_Joins_Filter_Out.png)
@@ -257,7 +253,6 @@ In the previous paragraph, we have taken an inbound stream of events and used SS
 Now, let’s run the query:
 
 ``` javascript
-
 INSERT INTO fraudulent_txn_kudu
 SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)
 FROM (
@@ -283,7 +278,6 @@ AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.even
 ) FRAUD
 JOIN `Kudu`.`default_database`.`default.customers` cus
 ON cus.account_id = FRAUD.ACCOUNT_ID
-
 ```
 We can see from the output that all the fraudulent transactions are displayed in the SSB console:
 
