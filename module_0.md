@@ -8,7 +8,9 @@ This page should be written to identifiy all of the items a new attendee should 
 
 ### Workload Password:
 
+```
 #P7dFpyAe@Gttd#
+```
 
 ### Kafka Brokers:
 
