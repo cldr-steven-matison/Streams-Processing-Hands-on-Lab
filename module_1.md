@@ -15,7 +15,7 @@ The architecture uses:
 
 The picture below depicts a high level architecture of an Event Driven Fraud Detection with SSB:
 
-![01 High Level Architecture](image1)
+![01 High Level Architecture](/Images/01_High_Level_Architecture.png)
 
 The architecture outlined above describes the implementation solution for fraud detection use cases on Cloudera Data Platform. The solution addresses :
 
