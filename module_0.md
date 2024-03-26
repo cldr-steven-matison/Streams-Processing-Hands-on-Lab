@@ -8,10 +8,10 @@ Attendees should familarize themselves with the content below and take the requi
 4. Unlock Keytab in Sql Stream Builder
 
 ## Warnings
-	Use a Personal Laptop
-	Disable VPNs
-	Try Icognito Browser (Chrome & Safari Preferred)
-	Do not copy/paste strings w/ trailing characters, etc
+ * Use a Personal Laptop
+ * Disable VPNs
+ * Try Icognito Browser (Chrome & Safari Preferred)
+ * Do not copy/paste strings w/ trailing characters, etc
 
 ***
 
@@ -19,17 +19,17 @@ Attendees should familarize themselves with the content below and take the requi
 
 You will be frequently copy/pasting the following details.  To make sure you get the correct values, use the COPY button top right.
 
-### Workload Password:
+### Workload Password
 
 ```
 #P7dFpyAe@Gttd#
 ```
 
-### Kafka Brokers:
+### Kafka Brokers
 ```
 csp-hol-kafka-corebroker0.se-sandb.a465-9q4k.cloudera.site:9093,csp-hol-kafka-corebroker1.se-sandb.a465-9q4k.cloudera.site:9093,csp-hol-kafka-corebroker2.se-sandb.a465-9q4k.cloudera.site:9093
 ```
-### Schema Registry URL:
+### Schema Registry URL
 ```
 https://csp-hol-kafka-master0.se-sandb.a465-9q4k.cloudera.site:7790/api/v1
 ```
@@ -43,7 +43,7 @@ csp-hol-kudu-master10.se-sandb.a465-9q4k.cloudera.site:7051,csp-hol-kudu-master2
 
 ## How to Login to Cloudera Public Cloud
 
-	[Link To Login](#)
+[Link To Login](#)
 
 ## How to use Menu's (TILES, LEFT NAV, ETC)
 
@@ -75,7 +75,9 @@ Check out CSA Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com
 
  * [SSB](https://docs.cloudera.com/csa/1.11.0/ssb-overview/topics/csa-ssb-intro.html) 
  * [CSA](https://docs.cloudera.com/csa/1.11.0/index.html) 
- * [Nifi](https://nifi.apache.org)
- * [Kafka](https://kafka.apache.org)
- * [Flink](https://flink.apache.org/) 
+ * [HUE]()
+ * [Apache Nifi](https://nifi.apache.org)
+ * [Apache Kafka](https://kafka.apache.org)
+ * [Apache Flink](https://flink.apache.org/) 
  * [Apache Iceberg](https://iceberg.apache.org/)
+ * [Apache Kudu](https://kudu.apache.org/)
