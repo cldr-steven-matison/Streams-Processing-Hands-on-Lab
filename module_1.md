@@ -79,7 +79,7 @@ The script will also stream a fraudulent transaction with the same account ID as
 
 The generated transactional events will be ingested in apache Kafka.
 
-Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging Manager](image3)
+Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging Manager](/Images/09_Streams_Messaging_Manager.png)
 
 ## Hue Database Setup
 
@@ -122,7 +122,7 @@ Next we need to set up the Data Sources and Data Catalogs in the Data Provider s
 - Adding the Schema Registry Catalog
 - Adding the Kudu Catalog.
 
-![10 SSB Data Providers](image4)
+![10 SSB Data Providers](/Images/10_SSB_Data_Providers.png)
 
 ### **Setting Up Virtual Tables**
 
@@ -130,11 +130,11 @@ To start using SSB, we need to create some virtual tables. In SSB, a Virtual Tab
 
 A table defines the schema of events in a Kafka topic. For instance, we need to create 2 tables txn1 and txn2. SSB provides an easy way to create a table :
 
-![11 Create SSB Kafka Table 1](image5)
+![11 Create SSB Kafka Table 1](/Images/11_Create_SSB_Kafka_Table_1.png)
 
 Make sure that you are using the Kafka timestamps and rename the "Event Time Column" to event_time
 
-![12 Create SSB Kafka Table 2](image6)
+![12 Create SSB Kafka Table 2](/Images/12_Create_SSB_Kafka_Table_2.png)
 
 This creates a table called txn1 that points to events inside the txn1 Kafka topic. These events are in JSON format. It also defines an event_time field which is computed from the Apache Kafka Timestamps and defines a watermark of 3 seconds. Similarly, we need to create a txn2 table before using them in SSB.
 
@@ -147,7 +147,7 @@ SELECT * FROM txn1;
 ```
 It’s as easy as querying data in a SQL database. Here’s how this looks like in the SSB console. Events are continuously consumed from Apache Kafka and printed in the UI:
 
-![13 SSB Simple Select Query](image7)
+![13 SSB Simple Select Query](/Images/13_SSB_Simple_Select_Query.png)
 
 ### **Stream to Stream Joins**
 
@@ -178,7 +178,7 @@ on txn1.account_id=txn2.account_id
 
 The output from SSB console:
 
-![14 Stream To stream Joins](image8)
+![14 Stream To stream Joins](/Images/14_Stream_To_stream_Joins.png)
 
 Now, we need to filter out :
 
@@ -220,7 +220,7 @@ HAVETOKM($p0, $p1, $p2, $p3);
 
 From SSB Console :
 
-![](image9)
+![15 SSB User Defined Function UDF](/Images/15_SSB_User_Defined_Function_UDF.png)
 
 Now, let’s run our query that implements our pattern :
 
@@ -248,7 +248,7 @@ AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.even
 
 ```
 
-![16 SSB Stream To Stream Joins Filter Out](image10)
+![16 SSB Stream To Stream Joins Filter Out](/Images/16_SSB_Stream_To_Stream_Joins_Filter_Out.png)
 
 ### **Stream to Stream Joins and Enrichment**
 
@@ -287,12 +287,12 @@ ON cus.account_id = FRAUD.ACCOUNT_ID
 ```
 We can see from the output that all the fraudulent transactions are displayed in the SSB console:
 
-![18 Stream To Stream Enrich](image12)
+![18 Stream To Stream Enrich](/Images/18_Stream_To_Stream_Enrich.png)
 
 SQL Stream Builder can also take keyed snapshots of the data stream and make that available through a REST interface in the form of Materialized Views. We will define an MV before running the query :
 
-![17 SSB Stream To Stream Enrich MV](image11)
+![17 SSB Stream To Stream Enrich MV](/Images/17_SSB_Stream_To_Stream_Enrich_MV.png)
 
 From Hue, we can see that the results are written to the Apache Kudu Table :
 
-![19 Stream To Stream Hue View Kudu Table](image13)
+![19 Stream To Stream Hue View Kudu Table](/Images/19_Stream_To_Stream_Hue_View_Kudu_Table.png)
