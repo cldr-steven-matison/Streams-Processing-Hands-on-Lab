@@ -126,6 +126,8 @@ Next we need to set up the Data Sources and Data Catalogs in the Data Provider s
 
 ![10 SSB Data Providers](/Images/10_SSB_Data_Providers.png)
 
+[ NEED NEW SCREEN SHOT ] 
+
 ### **Setting Up Virtual Tables**
 
 To start using SSB, we need to create some virtual tables. In SSB, a Virtual Table is a logical definition of the data source that includes the location and connection parameters, a schema, and any required, context for specific configuration parameters. Tables can be used for both reading and writing data in most cases. You can create and manage tables either manually or they can be automatically loaded from one of the catalogs as specified using the Data Providers section(2).

@@ -19,9 +19,11 @@ For this lab you will create an environment (in the marketing tenant) and the fo
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
  * Real Time Data Warehouse Data Hub (Impala/Kudu) : csp-hol-kudu
 
+![02 CDP Data Hub Clusters](/Images/02_CDP_Data_Hub_Clusters.png)
 
 When complete you will need to enable Data Flow on your environment and deploy our sample data flow to deliver data to Kafka topics attendees will use in Module 1.
 
+[ More details/instructions here ]
 
 ## Schema Registry
 
@@ -66,16 +68,17 @@ Add the following schema to the Schema Registry
 }
 ```
 
+![00 Schema Registry Schema](/Images/00_Schema_Registry_Schema.png)
+
 ## NiFi Flow Setup
 
-[ screen shot ]
-
+![00 NiFi Data Flow](/Images/00_NiFi_Data_Flow.png)
 
 [NiFi Flow Definition File](/assets/Fraud_Detection_Demo_Dataflow.json)
 
 You can deploy this flow in a Nifi Data Hub or in Dataflow.  The setup should be same, you just need to provide the appropriate parameters.
 
-[ screen shot of deployment parameters]
+![00 NiFi Data Flow Parameters](/Images/00_NiFi_Data_Flow_Parameters.png)
 
 After running the flow for a few minutes, confirm you are seeing data in both Kafka Topics: txn1 and txn2.
 
@@ -150,7 +153,9 @@ select * from customers;
 HOL Lead should import project and fully test ahead of live lab with attendees.
 All jobs should be operational and not require any edits or modifications.
 
--- i need to test this
+ ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
+
+[ i need to test this ] 
 
 ## DATA Viz
 
