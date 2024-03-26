@@ -39,13 +39,11 @@ In CDP Public Cloud, we've created a new environment called "hol-workshop" and d
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
  * Real Time Data Warehouse Data Hub (Impala/Kudu) : csp-hol-kudu
 
-![](image2)
+![02 CDP Data Hub Clusters](/Images/02_CDP_Data_Hub_Clusters.png)
 
 ## **Data Model**
 
-The data model will describe how data is generated and stored. In our fraud detection application, we will consider the following data model :
-
-- Generating fake financial transactions (Stream Kafka , Kudu table)
+The data model will describe how data is generated and stored. In our fraud detection application, we will consider the following data structures:
 
 ##### **Valid transaction**
 
@@ -62,7 +60,7 @@ The data model will describe how data is generated and stored. In our fraud dete
 
 ```
 
-The script will also stream a fraudulent transaction with the same account ID as the original transaction but with different location and amount. The transaction_id will be prefixed with 'xxx' in order to highlight them easily.
+The NiFi Data Flow will also stream a fraudulent transaction with the same account ID as the original transaction but with different location and amount. The transaction_id will be prefixed with 'xxx' in order to highlight them easily.
 
 ##### **Fraudulent transaction**
 
@@ -114,9 +112,9 @@ TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
 
 ## Sql Stream Builder
 
- Intro paragraph
+ Finish Intro paragraph, need to describe Project, Side Menu, Explorer, etc
 
- ![09.5 Intro to SSB](/Images/Intro_SSB.png)
+ ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
 ### **Setting Up Data Sources**
 
