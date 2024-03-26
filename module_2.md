@@ -5,12 +5,9 @@ In this module we are going to work with SSB and some new capabilities with [Apa
 
 ## Create Iceberg Jobs in SSB
 
-1. Within your project Create and Activate an Environment Variable with a key value pair for your userid -> username.  Be sure to activate after creation.
-
-2. Create CSA 1.11 Sample Job
+1. Create CSA 1.11 Sample Job
 
 ``` javascript
-
 -- First, create the ssb iceberg connector
 -- drop table if exists `iceberg_hive`;
 CREATE TABLE `iceberg_hive` (
@@ -30,15 +27,13 @@ INSERT INTO iceberg_hive(column_int,column_str) VALUES (1,'test2');
 
 -- Last, select the results
 Select * from iceberg_hive;
-
 ```
   Note: Execute the 3 statements individually.  If all 3 statements work, you have a working setup and are ready to go into the next Jobs.
 
-3. Create Create_Iceberg_Table Job
+2. Create Create_Iceberg_Table Job
 
 
 ``` javascript
-
 CREATE TABLE `fraudulent_txn_iceberg` (
   `ts` STRING,
   `account_id` STRING,
@@ -61,9 +56,7 @@ CREATE TABLE `fraudulent_txn_iceberg` (
   'catalog-type' = 'hive'
 )
 
-
 -- hue example - REMOVE
-
 -- CREATE transactions TABLE
 CREATE TABLE ${user_id}_fraud.fraudulent_txn_iceberg
 (
@@ -82,15 +75,11 @@ amount bigint,
 PRIMARY KEY (event_time, acc_id)
 )
 STORED AS ICEBERG;
-
-
-
 ```
 
-4. Create Insert_Iceberg Job
+3. Create Insert_Iceberg Job
 
 ``` javascript
-
 INSERT INTO fraudulent_txn_iceberg
 SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)
 FROM (
@@ -116,29 +105,25 @@ AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.even
 ) FRAUD
 JOIN `Kudu`.`default_database`.`default.customers` cus
 ON cus.account_id = FRAUD.ACCOUNT_ID
-
 ```
 
-Open HUE UI and execute the following statement:
+Open HUE UI and execute the following statements:
 
 ```javascript
- 
 SELECT * FROM ${user_id}_fraud.`fraudulent_txn_iceberg`;
-
+```
+```javascript
 SELECT count(*) FROM ${user_id}_fraud.`fraudulent_txn_iceberg`;
-
 ```
 
 [ insert some instructions to delete some data ]
 
 
-5. Create Time_Travel Job
+4. Create Time_Travel Job
 
 In Hue execute the following statements one at a time:
 
 ``` javascript
-
-
 -- Describe Table
 DESCRIBE FORMATTED ${user_id}_fraud.`fraudulent_txn_iceberg`; 
 
@@ -178,14 +163,11 @@ select card, sum(amount) from ${user_id}_fraud.`fraudulent_txn_iceberg` GROUP BY
   -- mastercard       116812083
   -- americanexpress  115538225
   -- visa             116185432
-
-
 ```
 
 Now that we have some snapshot ids and basic understanding of time travel with iceberg, lets create the Time_Travel Job:
 
 ``` javascript
-
 -- First, get snapshots ids for the iceberg table
 /* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report
 DESCRIBE HISTORY fraudulent_txn_iceberg; 
@@ -202,9 +184,13 @@ select * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='42638259415
 
 -- Select data from starting timestamp
 select * from fraudulent_txn_iceberg /*+OPTIONS('as-of-timestamp'='1699425703000')*/;
-
 ```
 ***
 
 
+# Congratulations
+
+You made it to the end of the first Cloudera Sql Stream Builder Hands On Lab.  If you completed everything you should now be able to confirm your SSB Project looks very similar to full SSB-CSP-HOL Project.
+
+![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 

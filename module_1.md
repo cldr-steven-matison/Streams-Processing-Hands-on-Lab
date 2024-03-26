@@ -116,6 +116,14 @@ TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
+### Create and Activate an Environment Variable 
+
+ ![09.6 SSB Environment Variable](/Images/09.6_SSB_Environment_Variable.png)
+
+  Create a key value pair for your userid -> username. Click [+] to add the key value pair, then click Create. Be sure to activate after creation.
+
+ ![09.7 SSB Environment Variable](/Images/09.6_SSB_Environment_Activate.png)
+
 ### **Setting Up Data Sources**
 
 Next we need to set up the Data Sources and Data Catalogs in the Data Provider section from Streaming SQL Console:
