@@ -21,9 +21,9 @@ For this lab you will create an environment (in the marketing tenant) and the fo
 
 ![02 CDP Data Hub Clusters](/Images/02_CDP_Data_Hub_Clusters.png)
 
-When complete you will need to enable Data Flow on your environment and deploy our sample data flow to deliver data to Kafka topics attendees will use in Module 1.
+When complete you will need to enable Data Flow on your environment and deploy our sample data flow to deliver data to the Kafka topics attendees will use in Module 1 SQL Stream Builder Jobs.
 
-[ More details/instructions here ]
+[ More details/instructions here?? ]
 
 ## Schema Registry
 
@@ -81,6 +81,8 @@ You can deploy this flow in a Nifi Data Hub or in Dataflow.  The setup should be
 ![00 NiFi Data Flow Parameters](/Images/00_NiFi_Data_Flow_Parameters.png)
 
 After running the flow for a few minutes, confirm you are seeing data in both Kafka Topics: txn1 and txn2.
+
+![00 NiFi Data Flow Success](/Images/00_NiFi_Data_Flow_Success.png)
 
 ## Hue Database Setup
 
@@ -151,11 +153,10 @@ select * from customers;
 ## SQL Stream Builder Setup
 
 HOL Lead should import project and fully test ahead of live lab with attendees.
-All jobs should be operational and not require any edits or modifications.
+All jobs should be operational and not require any edits or modifications.  This completed project will be used repeatedly as a visual reference during live lab.
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
-[ i need to test this ] 
 
 ## DATA Viz
 
