@@ -49,7 +49,7 @@ After login you should see CDP Public Cloud Home Screen
 
 ![M0_1 CDP Home](/Images/M0_1_CDP_Home_Screen.png)
 
-From any CDP Public Cloud page you can click (![M0_X CDP Home Tile](/Images/M0_2_CDP_Home_Tile.png)) to open the Left Navigation
+From any CDP Public Cloud page you can click Top Left ![M0_X CDP Home Tile](/Images/M0_2_CDP_Home_Tile.png) to open the full Left Navigation
 
 ![M0_3 CDP Left Navigation](/Images/M0_3_CDP_Left_Navigation.png)
 
