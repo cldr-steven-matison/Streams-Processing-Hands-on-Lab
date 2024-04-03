@@ -23,8 +23,6 @@ For this lab you will create an environment (in the marketing tenant) and the fo
 
 When complete you will need to enable Data Flow on your environment and deploy our sample data flow to deliver data to the Kafka topics attendees will use in Module 1 SQL Stream Builder Jobs.
 
-[ More details/instructions here?? ]
-
 ## Schema Registry
 
 Add the following schema to the Schema Registry
@@ -152,8 +150,7 @@ select * from customers;
 
 ## SQL Stream Builder Setup
 
-HOL Lead should import project and fully test ahead of live lab with attendees.
-All jobs should be operational and not require any edits or modifications.  This completed project will be used repeatedly as a visual reference during live lab.
+HOL Lead and Breakout Room Leaders should import project and fully test ahead of live lab with attendees. All jobs should be operational and not require any edits or modifications.  The completed project can be used as a visual reference during live lab.
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
