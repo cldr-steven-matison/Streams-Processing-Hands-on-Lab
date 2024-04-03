@@ -47,7 +47,7 @@ csp-hol-kudu-master10.se-sandb.a465-9q4k.cloudera.site:7051,csp-hol-kudu-master2
 
 After login you should see CDP Public Cloud Home Screen
 
-![M0_1 CDP Home](/Images/M0_1_CDP_Home_Screen.png)
+<img src="/Images/M0_1_CDP_Home_Screen.png" width="650">
 
 From any CDP Public Cloud page you can click this icon <img src="/Images/M0_2_CDP_Home_Tile.png" width="25" height="25" align="absmiddle"> (top left) to open the full Left Navigation
 
@@ -57,7 +57,7 @@ From any CDP Public Cloud page you can click this icon <img src="/Images/M0_2_CD
 
 From Home Screen click your Username (bottom left) and navigate to your Profile to click Set Workload Password:
 
-<img src="/Images/M0_4_CDP_Workload_Password.png" width="550">
+<img src="/Images/M0_4_CDP_Workload_Password.png" width="650">
 
 
 ## How to find Data Hub UIs (Hue, Schema Registry, Streams Messaging Manager, Sql Stream Builder)
