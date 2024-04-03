@@ -79,7 +79,7 @@ Click into csp-hol-flink Data Hub and open Streaming SQL Console:
 
 ![M0_7 CDP Flink](/Images/M0_7_CDP_Flink.png)
 
-Once you open the UI, click the   <img src="/Images/M0_7.5_SSB_Switch.png" width="85"> to open your Default Project.
+Once you open the UI, click the   <img src="/Images/M0_7.5_SSB_Switch.png" width="85" align="absmiddle"> to open your Default Project.
 
 
 ## How to Unlock Keytab in SSB
