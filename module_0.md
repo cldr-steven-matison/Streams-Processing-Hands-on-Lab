@@ -84,17 +84,17 @@ Once you open the UI, click the   <img src="/Images/M0_7.5_SSB_Switch.png" width
 
 ## How to Unlock Keytab in SSB
 
-When you first switch to your default projecct, you will be presented with the following prompt:
+When you first open your default project, you will be presented with the following prompt:
 
-![M0_9 CDP Flink](/Images/M0_9_SSB_Workload_Password.png)
+<img src="Images/M0_9_SSB_Workload_Password.png" width="150">
 
 Click into provide your username and workload password as follows:
 
-![M0_10 CDP Flink](/Images/M0_10_SSB_Workload_Password.png)
+<img src="/Images/M0_10_SSB_Workload_Password.png" width="150">
 
-Click Save Keytab:
+Click Unlock Keytab:
 
-![M0_11 CDP Flink](/Images/M0_11_SSB_Workload_Password.png)
+<img src="/Images/M0_11_SSB_Workload_Password.png" width="150">
 
 ***
 
