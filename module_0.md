@@ -95,6 +95,9 @@ Click Unlock Keytab:
 
 <img src="/Images/M0_11_SSB_Workload_Password.png" width="450">
 
+
+You are now ready to get started on [Module 1: Introduction to SQL Stream Builder](module_1.md).
+
 ***
 
 ## References
