@@ -90,11 +90,11 @@ When you first open your default project, you will be presented with the followi
 
 Click into provide your username and workload password as follows:
 
-<img src="/Images/M0_10_SSB_Workload_Password.png" width="300">
+<img src="/Images/M0_10_SSB_Workload_Password.png" width="450">
 
 Click Unlock Keytab:
 
-<img src="/Images/M0_11_SSB_Workload_Password.png" width="300">
+<img src="/Images/M0_11_SSB_Workload_Password.png" width="450">
 
 ***
 
