@@ -86,15 +86,15 @@ Once you open the UI, click the   <img src="/Images/M0_7.5_SSB_Switch.png" width
 
 When you first open your default project, you will be presented with the following prompt:
 
-<img src="Images/M0_9_SSB_Workload_Password.png" width="150">
+<img src="Images/M0_9_SSB_Workload_Password.png" width="300">
 
 Click into provide your username and workload password as follows:
 
-<img src="/Images/M0_10_SSB_Workload_Password.png" width="150">
+<img src="/Images/M0_10_SSB_Workload_Password.png" width="300">
 
 Click Unlock Keytab:
 
-<img src="/Images/M0_11_SSB_Workload_Password.png" width="150">
+<img src="/Images/M0_11_SSB_Workload_Password.png" width="300">
 
 ***
 
