@@ -49,7 +49,9 @@ After login you should see CDP Public Cloud Home Screen
 
 ![M0_1 CDP Home](/Images/M0_1_CDP_Home_Screen.png)
 
-From any CDP Public Cloud page you can click Top Left ![M0_X CDP Home Tile](/Images/M0_2_CDP_Home_Tile.png) to open the full Left Navigation
+From any CDP Public Cloud page you can click Top Left <img src="/Images/M0_2_CDP_Home_Tile.png" width="10" height="10" align="absmiddle">
+
+to open the full Left Navigation
 
 ![M0_3 CDP Left Navigation](/Images/M0_3_CDP_Left_Navigation.png)
 
@@ -67,15 +69,15 @@ From Home Screen click on Data Hub Clusters and search "csp-hol"
 
 ![M0_5 CDP Data Hubs](/Images/M0_5_CDP_Data_Hubs.png)
 
-Find and open Schema Registry and Streams Messaging Manager UIs in the csp-hol-kafka Data Hub:
+Click into csp-hol-kafka Data Hub and open Schema Registry and Streams Messaging Manager UIs:
 
 ![M0_6 CDP Kafka](/Images/M0_6_CDP_Kafka.png)
 
-Find and open Sql Stream Builder in the csp-hol-flink Data Hub:
+Click into csp-hol-flink Data Hub and open Streaming SQL Console:
 
 ![M0_7 CDP Flink](/Images/M0_7_CDP_Flink.png)
 
-Find and open HUE in the csp-hol-kudu Data Hub:
+Click into the csp-hol-kudu Data Hub and open Hue:
 
 ![M0_8 CDP Flink](/Images/M0_8_CDP_Kudu.png)
 
