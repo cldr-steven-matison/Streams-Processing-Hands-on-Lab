@@ -11,11 +11,11 @@ Attendees should familarize themselves with the content below and take the requi
  * Use a Personal Laptop
  * Disable VPNs
  * Try Icognito Browser (Chrome & Safari Preferred)
- * Do not copy/paste strings w/ trailing characters, etc
+ * Do not copy/paste strings w/ trailing characters.  Use GitHub Copy Buttons.
 
 ***
 
-## Copy Paste Boared
+## Copy Paste Board
 
 You will be frequently copy/pasting the following details.  To make sure you get the correct values, use the COPY button top right.
 
@@ -45,11 +45,40 @@ csp-hol-kudu-master10.se-sandb.a465-9q4k.cloudera.site:7051,csp-hol-kudu-master2
 
 [Link To Login](#)
 
-## How to use Menu's (TILES, LEFT NAV, ETC)
+After login you should see CDP Public Cloud Home Screen
+
+![M0_1 CDP Home](/Images/M0_1_CDP_Home_Screen.png)
+
+From any CDP Public Cloud page you can click (![M0_X CDP Home Tile](/Images/M0_2_CDP_Home_Tile.png)) to open the Left Navigation
+
+![M0_3 CDP Left Navigation](/Images/M0_3_CDP_Left_Navigation.png)
+
+## Workload Password Setup
+
+From Home Screen click your Username (bottom left) and navigate to your Profile to click Set Workload Password:
+
+![M0_4 CDP Workload Password](/Images/M0_4_CDP_Workload_Password.png)
+
+Use the same password above.
 
 ## How to find Data Hub UIs (Hue, Schema Registry, Streams Messaging Manager, Sql Stream Builder)
 
-## Workload Password Setup
+From Home Screen click on Data Hub Clusters and search "csp-hol"
+
+![M0_5 CDP Data Hubs](/Images/M0_5_CDP_Data_Hubs.png)
+
+Find and open Schema Registry and Streams Messaging Manager UIs in the csp-hol-kafka Data Hub:
+
+![M0_6 CDP Kafka](/Images/M0_6_CDP_Kafka.png)
+
+Find and open Sql Stream Builder in the csp-hol-flink Data Hub:
+
+![M0_7 CDP Flink](/Images/M0_7_CDP_Flink.png)
+
+Find and open HUE in the csp-hol-kudu Data Hub:
+
+![M0_8 CDP Flink](/Images/M0_8_CDP_Kudu.png)
+
 
 ## How to Unlock Keytab in SSB
 
