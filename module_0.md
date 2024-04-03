@@ -57,7 +57,7 @@ From any CDP Public Cloud page you can click this icon <img src="/Images/M0_2_CD
 
 From Home Screen click your Username (bottom left) and navigate to your Profile to click Set Workload Password:
 
-<img src="/Images/M0_4_CDP_Workload_Password.png" width="450">
+<img src="/Images/M0_4_CDP_Workload_Password.png" width="550">
 
 
 ## How to find Data Hub UIs (Hue, Schema Registry, Streams Messaging Manager, Sql Stream Builder)
