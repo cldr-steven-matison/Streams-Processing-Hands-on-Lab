@@ -51,9 +51,7 @@ After login you should see CDP Public Cloud Home Screen
 
 From any CDP Public Cloud page you can click this icon <img src="/Images/M0_2_CDP_Home_Tile.png" width="25" height="25" align="absmiddle"> (top left) to open the full Left Navigation
 
-<center>
   <img src="/Images/M0_3_CDP_Left_Navigation.png" width="150">
-</center>
 
 ## Workload Password Setup
 
@@ -84,13 +82,17 @@ Click into the csp-hol-kudu Data Hub and open Hue:
 
 ## How to Unlock Keytab in SSB
 
-When you first login to Sql Stream Builder, you will be presented with the following prompt:
+When you first switch to your default projecct, you will be presented with the following prompt:
 
-[ screen shot ]
+![M0_9 CDP Flink](/Images/M0_9_SSB_Workload_Password.png)
 
-Click into provide your keytab as follows:
+Click into provide your username and workload password as follows:
 
-[ screen shot ]
+![M0_10 CDP Flink](/Images/M0_10_SSB_Workload_Password.png)
+
+Click Save Keytab:
+
+![M0_11 CDP Flink](/Images/M0_11_SSB_Workload_Password.png)
 
 ***
 
