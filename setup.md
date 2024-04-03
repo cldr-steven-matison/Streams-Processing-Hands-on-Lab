@@ -30,7 +30,7 @@ Add the following schema to the Schema Registry
 ```
 {
  "type": "record",
- "name": "FinTransactions",
+ "name": "fintxn",
  "fields": [
   {
    "name": "ts",
