@@ -49,11 +49,11 @@ After login you should see CDP Public Cloud Home Screen
 
 ![M0_1 CDP Home](/Images/M0_1_CDP_Home_Screen.png)
 
-From any CDP Public Cloud page you can click Top Left <img src="/Images/M0_2_CDP_Home_Tile.png" width="25" height="25" align="absmiddle">
+From any CDP Public Cloud page you can click this icon <img src="/Images/M0_2_CDP_Home_Tile.png" width="25" height="25" align="absmiddle"> (top left) to open the full Left Navigation
 
-to open the full Left Navigation
-
-![M0_3 CDP Left Navigation](/Images/M0_3_CDP_Left_Navigation.png)
+<center>
+  <img src="/Images/M0_3_CDP_Left_Navigation.png" width="150">
+</center>
 
 ## Workload Password Setup
 
