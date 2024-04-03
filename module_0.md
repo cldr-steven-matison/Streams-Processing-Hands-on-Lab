@@ -47,7 +47,7 @@ csp-hol-kudu-master10.se-sandb.a465-9q4k.cloudera.site:7051,csp-hol-kudu-master2
 
 After login you should see CDP Public Cloud Home Screen
 
-<img src="/Images/M0_1_CDP_Home_Screen.png" width="650">
+<img src="/Images/M0_1_CDP_Home_Screen.png" width="750">
 
 From any CDP Public Cloud page you can click this icon <img src="/Images/M0_2_CDP_Home_Tile.png" width="25" height="25" align="absmiddle"> (top left) to open the full Left Navigation
 
