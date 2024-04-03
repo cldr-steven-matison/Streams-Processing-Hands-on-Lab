@@ -157,33 +157,3 @@ All jobs should be operational and not require any edits or modifications.  This
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
-
-## DATA Viz
-
-We may not get this far in the HOL,  remove this if we do not have time to finish detail instructions
-
-https://docs.google.com/document/d/1M61uEeoK9jIWGTlk9feJNTaU2IA_FbQghs-3HmxBSXo/edit 
-
-
-Current Data Viz readme steps are in this [repo](https://github.com/cldr-steven-matison/Fraud-Prevention-With-Cloudera-SSB?tab=readme-ov-file#data-visualization)
-
-CDW data Viz
-
-[ screen shot ]
-
-Create the connection
-
-[ screen shot ]
-
-
-[ screen shot ]
-
-Import the data viz dashboard (.json file) 
-
-[ screen shot ]
-
-Dashboard:
-
-[ screen shot ]
-
-
