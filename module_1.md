@@ -116,9 +116,6 @@ TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
-### Switch to Your Default Project
-
- ![09.55 SSB Default Project](/Images/09.55_SSB_Default_Project.png)
 
 ### Create and Activate an Environment Variable 
 
