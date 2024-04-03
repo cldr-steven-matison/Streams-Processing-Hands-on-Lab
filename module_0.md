@@ -67,6 +67,10 @@ From Home Screen click on Data Hub Clusters and search "csp-hol"
 
 ![M0_5 CDP Data Hubs](/Images/M0_5_CDP_Data_Hubs.png)
 
+Click into the csp-hol-kudu Data Hub and open Hue:
+
+![M0_8 CDP Flink](/Images/M0_8_CDP_Kudu.png)
+
 Click into csp-hol-kafka Data Hub and open Schema Registry and Streams Messaging Manager UIs:
 
 ![M0_6 CDP Kafka](/Images/M0_6_CDP_Kafka.png)
@@ -75,9 +79,7 @@ Click into csp-hol-flink Data Hub and open Streaming SQL Console:
 
 ![M0_7 CDP Flink](/Images/M0_7_CDP_Flink.png)
 
-Click into the csp-hol-kudu Data Hub and open Hue:
-
-![M0_8 CDP Flink](/Images/M0_8_CDP_Kudu.png)
+Once you open the UI, click the   <img src="/Images/M0_7.5_SSB_Switch.png" width="85"> to open your Default Project.
 
 
 ## How to Unlock Keytab in SSB
