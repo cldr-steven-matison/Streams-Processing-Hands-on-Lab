@@ -59,7 +59,6 @@ From Home Screen click your Username (bottom left) and navigate to your Profile 
 
 ![M0_4 CDP Workload Password](/Images/M0_4_CDP_Workload_Password.png)
 
-Use the same password above.
 
 ## How to find Data Hub UIs (Hue, Schema Registry, Streams Messaging Manager, Sql Stream Builder)
 
