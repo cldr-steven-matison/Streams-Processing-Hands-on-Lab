@@ -236,24 +236,25 @@ Now, let’s run our query that implements our pattern :
 
 ``` javascript
 SELECT
-txn1.ts as EVENT_TIME,
-txn2.ts,
-txn1.account_id as ACCOUNT_ID,
-txn1.transaction_id AS TRANSACTION_ID,
-txn2.transaction_id,
-txn1.amount as AMOUNT,
-txn1.lat AS LAT,
-txn1.lon AS LON,
-HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) as distance
-FROM txn1
-INNER JOIN txn2
-on txn1.account_id=txn2.account_id
+      txn1.ts as EVENT_TIME,
+      txn2.ts,
+      txn1.account_id as ACCOUNT_ID,
+      txn1.transaction_id AS TRANSACTION_ID,
+      txn2.transaction_id,
+      txn1.amount as AMOUNT,
+      txn1.lat AS LAT,
+      txn1.lon AS LON,
+      HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) as distance
+
+FROM  txn1
+INNER JOIN  txn2
+      on txn1.account_id=txn2.account_id
 where
-txn1.transaction_id <> txn2.transaction_id
-AND (txn1.lat &lt;> txn2.lat OR txn1.lon <&gt; txn2.lon)
-AND txn1.ts < txn2.ts
-AND HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) > 1
-AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
+      txn1.transaction_id <> txn2.transaction_id
+      AND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)
+      AND txn1.ts < txn2.ts
+      AND HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) > 1
+      AND txn2.event_time  BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
 ```
 
 ![16 SSB Stream To Stream Joins Filter Out](/Images/16_SSB_Stream_To_Stream_Joins_Filter_Out.png)
