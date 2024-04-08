@@ -309,5 +309,8 @@ From Hue, we can see that the results are written to the Apache Kudu Table :
 
 ![19 Stream To Stream Hue View Kudu Table](/Images/19_Stream_To_Stream_Hue_View_Kudu_Table.png)
 
+***
+
+## End Module 1
 
 Congrats, you have completed Module 1, now lets take a look at Apache Iceberg with [Module 2: Introduction to Apache Iceberg with SQL Stream Builder](module_2.md).

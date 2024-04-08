@@ -188,9 +188,9 @@ select * from fraudulent_txn_iceberg /*+OPTIONS('as-of-timestamp'='1699425703000
 ***
 
 
-# Congratulations
+# End Module 2
 
-You made it to the end of the first Cloudera Sql Stream Builder Hands On Lab.  If you completed everything you should now be able to confirm your SSB Project looks very similar to full SSB-CSP-HOL Project.
+Congratulations, you made it to the end of the first Cloudera Sql Stream Builder Hands On Lab.  If you completed everything you should now be able to confirm your SSB Project looks very similar to full SSB-CSP-HOL Project.
 
 ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
