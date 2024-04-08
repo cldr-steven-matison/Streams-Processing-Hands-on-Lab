@@ -162,12 +162,12 @@ Make sure that you are using the Kafka timestamps and rename the "Event Time Col
 
 This creates a table called txn1 that points to events inside the txn1 Kafka topic. These events are in JSON format. It also defines an event_time field which is computed from the Apache Kafka Timestamps and defines a watermark of 3 seconds. Similarly, we need to create a txn2 table before using them in SSB.
 
-We are ready to query our tables: 
+We are ready to query our tables.  Create a new Job in SSB with the following SQL query: 
 
 ``` javascript
 SELECT * FROM txn1;
 ```
-It’s as easy as querying data in a SQL database. Here’s how this looks like in the SSB console. Events are continuously consumed from Apache Kafka and printed in the UI:
+Querying streaming data is now as easy as querying data in a SQL database. Here’s how this looks like in the SSB console. Events are continuously consumed from Apache Kafka and printed in the UI:
 
 ![13 SSB Simple Select Query](/Images/13_SSB_Simple_Select_Query.png)
 
@@ -304,10 +304,6 @@ ON cus.account_id = FRAUD.ACCOUNT_ID
 We can see from the output that all the fraudulent transactions are displayed in the SSB console:
 
 ![18 Stream To Stream Enrich](/Images/18_Stream_To_Stream_Enrich.png)
-
-SQL Stream Builder can also take keyed snapshots of the data stream and make that available through a REST interface in the form of Materialized Views. We will define an MV before running the query :
-
-![17 SSB Stream To Stream Enrich MV](/Images/17_SSB_Stream_To_Stream_Enrich_MV.png)
 
 From Hue, we can see that the results are written to the Apache Kudu Table :
 
