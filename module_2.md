@@ -55,26 +55,6 @@ CREATE TABLE `fraudulent_txn_iceberg` (
   'connector' = 'iceberg',
   'catalog-type' = 'hive'
 )
-
--- hue example - REMOVE
--- CREATE transactions TABLE
-CREATE TABLE ${user_id}_fraud.fraudulent_txn_iceberg
-(
-event_time string,
-acc_id string,
-transaction_id string,
-f_name string,
-l_name string,
-email string,
-gender string,
-phone string,
-card string,
-lat double,
-lon double,
-amount bigint,
-PRIMARY KEY (event_time, acc_id)
-)
-STORED AS ICEBERG;
 ```
 
 3. Create Insert_Iceberg Job

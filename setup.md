@@ -112,7 +112,6 @@ PARTITION BY HASH PARTITIONS 16
 STORED AS KUDU
 TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
 
-
 CREATE external TABLE customer_temp
 (
 acc_id string,
