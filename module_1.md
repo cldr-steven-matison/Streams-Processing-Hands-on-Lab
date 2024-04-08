@@ -11,7 +11,7 @@ The architecture uses:
 - [Cloudera Streaming analytics -Apache Flink/SSB](https://docs.cloudera.com/csa/1.6.0/index.html) - for data processing.Cloudera offers Cloudera Stream Analytics(CSA) which is essentially Apache Flink + SQL Stream Builder (SSB). Apache Flink offers low-latency processing of unbounded data streams. It connects to different data sources such as Kafka topics providing real-time insights or detecting anomalies in streaming context. Streaming SQL Builder (SSB) provides a SQL layer that allows data analysts to rapidly experiment with streaming data without writing java code. SSB supports different data connectors: Apache Kafka, apache Kudu, apache Hive,Schema Registry.
 - [Cloudera Fast Storage Analytics -Apache Kudu](https://docs.cloudera.com/cdp-private-cloud-base/7.1.7/kudu-overview/topics/kudu-intro.html) - for storage of transactional events. Apache Kudu is a distributed, columnar storage, which offers "fast analytics on fast data". Thus, Apache Flink and Apache Kudu make a great match.
 - [Cloudera Data Warehouse -Apache Impala](https://docs.cloudera.com/cdp-private-cloud-base/7.1.7/impala-overview/topics/impala-overview.html) - for user query of all transactional events and building BI Dashboards.
-- [Cloudera Data Visualization](https://docs.cloudera.com/data-visualization/cloud/index.html) - for quickly explore and get insight across the data lifecycle from data ingestion with Nifi, to data processing with Flink and SSB.
+
 
 The picture below depicts a high level architecture of an Event Driven Fraud Detection with SSB:
 
@@ -83,7 +83,7 @@ Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging
 
 ## Hue Database Setup
 
-Instructions here for any HUE DDL needed for default tables.
+Switch to your HUE UI and execute the following statements:
 
 ``` javascript
 -- CREATE userid_fraud DATABASE
@@ -110,12 +110,16 @@ STORED AS KUDU
 TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
 ```
 
+This will create your Users database and kudu table for Fraudulent Transactions.
+
+
 ## Sql Stream Builder
 
- Finish Intro paragraph, need to describe Project, Side Menu, Explorer, etc
+Switch to your Streaming SQL Console.   Below is an example of what your finished SSB Project will look like.   Breakout room leader should have a live copy ready to show attendees around.
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
+Be sure to have a look around the UI.  Inspect the Left Navigation, Explorer Tab, and Summary Screen.
 
 ### Create and Activate an Environment Variable 
 
@@ -132,12 +136,17 @@ TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
 Next we need to set up the Data Sources and Data Catalogs in the Data Provider section from Streaming SQL Console:
 
 - Adding the Apache Kafka Cluster
+
+![M0_91 Add Kafka Cluster](/Images/M0_91_Add_Kafka_Cluster.png)
+
 - Adding the Schema Registry Catalog
+
+![M0_92 Add Schema Registry](/Images/M0_92_Add_Schema_Registry.png)
+
 - Adding the Kudu Catalog.
 
-![10 SSB Data Providers](/Images/10_SSB_Data_Providers.png)
+![M0_93 Add Kudu Catalog](/Images/M0_93_Add_Kudu_Catalog.png)
 
-[ NEED NEW SCREEN SHOTS ] 
 
 ### **Setting Up Virtual Tables**
 
@@ -303,3 +312,6 @@ SQL Stream Builder can also take keyed snapshots of the data stream and make tha
 From Hue, we can see that the results are written to the Apache Kudu Table :
 
 ![19 Stream To Stream Hue View Kudu Table](/Images/19_Stream_To_Stream_Hue_View_Kudu_Table.png)
+
+
+Congrats, you have completed Module 1, now lets take a look at Apache Iceberg with [Module 2: Introduction to Apache Iceberg with SQL Stream Builder](module_2.md).
