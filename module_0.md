@@ -22,7 +22,7 @@ You will be frequently copy/pasting the following details.  To make sure you get
 ### Workload Password
 
 ```
-#P7dFpyAe@Gttd#
+G0yvxvdms5srhyKF
 ```
 
 ### Kafka Brokers
