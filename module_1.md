@@ -135,17 +135,18 @@ Be sure to have a look around the UI.  Inspect the Left Navigation, Explorer Tab
 
 Next we need to set up the Data Sources and Data Catalogs in the Data Provider section from Streaming SQL Console:
 
-- Adding the Apache Kafka Cluster
 
-![M0_91 Add Kafka Cluster](/Images/M0_91_Add_Kafka_Cluster.png)
+First, add a New Kafka Data Source
 
-- Adding the Schema Registry Catalog
+<img src="/Images/M0_91_Add_Kafka_Cluster.png" width="450">
 
-![M0_92 Add Schema Registry](/Images/M0_92_Add_Schema_Registry.png)
+Next, add a new Catalog for the Schema Registry
 
-- Adding the Kudu Catalog.
+<img src="/Images/M0_92_Add_Schema_Registry.png" width="450">
 
-![M0_93 Add Kudu Catalog](/Images/M0_93_Add_Kudu_Catalog.png)
+Last, add a new Catalog for the Kudu Catalog.
+
+<img src="/Images/M0_93_Add_Kudu_Catalog.png" width="450">
 
 
 ### **Setting Up Virtual Tables**
