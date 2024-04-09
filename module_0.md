@@ -43,7 +43,7 @@ csp-hol-kudu-master10.csp-hand.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master2
 
 ## How to Login to Cloudera Public Cloud
 
-[Link To Login](#)
+[Link To Login](https://login.cdpworkshops.cloudera.com/auth/realms/field-marketing-amer/protocol/saml/clients/cdp-sso)
 
 After login you should see CDP Public Cloud Home Screen
 
