@@ -31,7 +31,7 @@ csp-hol-kafka-corebroker0.csp-hand.z30z-14kp.cloudera.site:9093,csp-hol-kafka-co
 ```
 ### Schema Registry URL
 ```
-https://csp-hol-kafka-master0.csp-hand.z30z-14kp.cloudera.site:7790/api/v1
+https://csp-hol-kafka-registry0.csp-hand.z30z-14kp.cloudera.site:7790/api/v1
 ```
 
 ### Kudu Masters
