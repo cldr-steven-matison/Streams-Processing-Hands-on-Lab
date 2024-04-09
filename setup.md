@@ -87,8 +87,6 @@ After running the flow for a few minutes, confirm you are seeing data in both Ka
 Instructions here for any HUE DDL needed for default tables.
 
 ```
-
-
 -- CREATE userid_fraud DATABASE
 CREATE DATABASE ${user_id}_fraud;
 
