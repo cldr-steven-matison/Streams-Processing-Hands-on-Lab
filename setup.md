@@ -111,40 +111,25 @@ PRIMARY KEY (event_time, acc_id)
 PARTITION BY HASH PARTITIONS 16
 STORED AS KUDU
 TBLPROPERTIES ('kudu.num_tablet_replicas' = '3');
+```
 
-CREATE external TABLE customer_temp
-(
-acc_id string,
-f_name string,
-l_name string,
-email string,
-gender string,
-phone string,
-card string)
+Use HUE Importer to upload and import [Customer Data](/Assets/01_Customer_Data.csv)
 
-ROW FORMAT DELIMITED FIELDS TERMINATED BY ","
-STORED AS TEXTFILE;
-
-LOAD DATA INPATH '' INTO TABLE default.customer_temp
-
--- i had issues with this, used hue imported, had issues here ,but after several attempts the database was created and users are existing.
-
-select * from 01_customer_data;
+```
+-- confirm data exists
+select * FROM hue__tmp_01_customer_data;
 
 
+-- create final customer table
 CREATE TABLE customers
 PRIMARY KEY (account_id)
 PARTITION BY HASH PARTITIONS 16
 STORED AS KUDU
 TBLPROPERTIES ('kudu.num_tablet_replicas' = '3')
-AS select  *  from 01_customer_data;
+AS select  *  from hue__tmp_01_customer_data;
 
+-- confirm data exists
 select * from customers;
-
-
--- i had issues here with account_id data type...  had to do some other temp tables and some select cast(account_id as string) in the inserts..
-
-
 ```
 
 ## SQL Stream Builder Setup
