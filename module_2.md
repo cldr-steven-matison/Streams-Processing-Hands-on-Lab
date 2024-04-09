@@ -43,9 +43,8 @@ CREATE TABLE `fraudulent_txn_iceberg` (
   `email` STRING,
   `phone` STRING,
   `card` STRING,
-  `lat` STRING,
-  `lon` STRING,
-  `distance` STRING,
+  `lat` DOUBLE,
+  `lon` DOUBLE,
   `amount` STRING
 ) WITH (
   'engine.hive.enabled' = 'true',
@@ -61,7 +60,7 @@ CREATE TABLE `fraudulent_txn_iceberg` (
 
 ``` javascript
 INSERT INTO fraudulent_txn_iceberg
-SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)
+SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL , cus.phone as PHONE , cus.card as CARD ,LAT, LON, CAST(AMOUNT AS STRING)
 FROM (
 SELECT
 txn1.ts as EVENT_TIME,
@@ -96,7 +95,7 @@ SELECT * FROM ${user_id}_fraud.`fraudulent_txn_iceberg`;
 SELECT count(*) FROM ${user_id}_fraud.`fraudulent_txn_iceberg`;
 ```
 
-[ insert some instructions to delete some data ]
+Execute and Stop your Insert_Iceberg Job above a few times until you have over 3,000 results.
 
 
 4. Create Time_Travel Job

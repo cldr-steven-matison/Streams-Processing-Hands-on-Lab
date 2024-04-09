@@ -133,7 +133,7 @@ Be sure to have a look around the UI.  Inspect the Left Navigation, Explorer Tab
 
 ### **Setting Up Data Sources**
 
-Next we need to set up the Data Sources and Data Catalogs in the Data Provider section from Streaming SQL Console:
+Next we need to set up the Data Sources and Data Catalogs from Streaming SQL Console.  Follow screen shots below, be sure to Validate each before clicking Create.
 
 
 First, add a New Kafka Data Source
@@ -271,13 +271,13 @@ where
 
 ### **Stream to Stream Joins and Enrichment**
 
-In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in another Kudu table called "fraudulent_txn_iceberg".
+In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in another Kudu table called "fraudulent_txn_kudu".
 
-Now, let’s run the query:
+Now, let's build the final Insert Query.  Be sure to use auto complete to find your fraudulent_txn_kudu Table.
 
 ``` javascript
 INSERT INTO fraudulent_txn_kudu
-SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , CAST(LAT AS STRING), CAST(LON AS STRING), CAST(AMOUNT AS STRING)
+SELECT EVENT_TIME, ACCOUNT_ID, TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , LAT, LON, AMOUNT
 FROM (
 SELECT
 txn1.ts as EVENT_TIME,

@@ -117,6 +117,8 @@ Use HUE Importer to upload and import [Customer Data](/Assets/01_Customer_Data.c
 -- confirm data exists
 select * FROM hue__tmp_01_customer_data;
 
+-- do some column type changes to match
+ALTER TABLE hue__tmp_01_customer_data CHANGE account_id account_id STRING;
 
 -- create final customer table
 CREATE TABLE customers
