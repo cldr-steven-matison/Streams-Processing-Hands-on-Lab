@@ -115,23 +115,27 @@ DESCRIBE HISTORY ${user_id}_fraud.`fraudulent_txn_iceberg`
 -- copy 2 ids,  one older than the other
 
 -- Get Totals Per Card Type As of SnapShot 1 
-select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_iceberg` FOR SYSTEM_VERSION AS OF 2163411949573389139 GROUP BY card
+select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_iceberg` 
+FOR SYSTEM_VERSION AS OF 2163411949573389139 GROUP BY card
   -- mastercard       103930672
   -- americanexpress  105070827
   -- visa             104719497
 
 -- Get Totals Per Card Type As of SnapShot 2
-select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_iceberg` FOR SYSTEM_VERSION AS OF 2013237884718568734 GROUP BY card
+select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_iceberg` 
+FOR SYSTEM_VERSION AS OF 2013237884718568734 GROUP BY card
   -- mastercard       116812083
   -- americanexpress  115538225
   -- visa             116185432
  
 -- Get Count as of SnapShot 2  
-select count(*) from ${user_id}_fraud.`fraudulent_txn_iceberg` FOR SYSTEM_VERSION AS OF 2013237884718568734  
+select count(*) from ${user_id}_fraud.`fraudulent_txn_iceberg` 
+FOR SYSTEM_VERSION AS OF 2013237884718568734  
  -- 348732
  
 -- Roll back to Snapshot 2
-ALTER TABLE ${user_id}_fraud.`fraudulent_txn_iceberg` EXECUTE ROLLBACK(2013237884718568734);
+ALTER TABLE ${user_id}_fraud.`fraudulent_txn_iceberg` 
+EXECUTE ROLLBACK(2013237884718568734);
 
 -- Confirm current table Count is Correct
 select count(*) from ${user_id}_fraud.`fraudulent_txn_iceberg`

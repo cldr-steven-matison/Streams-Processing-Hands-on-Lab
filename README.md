@@ -6,7 +6,7 @@ Learn how Cloudera Streaming Analytics (CSA) can help with a myriad of real-worl
 
 During this session, we will create data sources, starting with simple SQL statements, and work up to a full-fledged stream pipeline. We will guide you step by step, provide answers to your questions, and lead you to stream processing with SQL nirvana!
 
-##Lab Highlights
+## Lab Highlights
 
 - Use SQL Stream Builder to define tables as sources and sinks using DDL statements.
 - Execute a job, correct errors, and monitor running jobs and performance which will run in Apache Flink
