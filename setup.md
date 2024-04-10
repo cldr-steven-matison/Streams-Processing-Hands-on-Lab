@@ -138,3 +138,9 @@ HOL Lead and Breakout Room Leaders should import project and fully test ahead of
 
  ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
 
+## End Setup
+
+You are now ready to get started on [Module 0: HOL Getting Started](module_0.md).
+
+***
+

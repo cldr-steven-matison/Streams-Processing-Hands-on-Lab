@@ -26,3 +26,21 @@ During this session, we will create data sources, starting with simple SQL state
 
 ### [Module 2: Introduction to Apache Iceberg with SQL Stream Builder](module_2.md)
 
+## References
+
+Check out Whats New in [CDP 7.1.9](https://docs.cloudera.com/cdp-private-cloud-base/7.1.9/runtime-release-notes/topics/rt-pvc-whats-new.html) 
+
+Check out Whats new in [CSA 1.11](https://docs.cloudera.com/csa/1.11.0/release-notes/topics/csa-what-new.html)
+
+Check SQL Stream Builder in [CDP Public Cloud SSB](https://docs.cloudera.com/csa/1.11.0/ssb-overview/topics/csa-ssb-key-features.html)
+
+Check out CSA Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.11.0/index.html)
+
+ * [SSB](https://docs.cloudera.com/csa/1.11.0/ssb-overview/topics/csa-ssb-intro.html) 
+ * [CSA](https://docs.cloudera.com/csa/1.11.0/index.html) 
+ * [HUE]()
+ * [Apache Nifi](https://nifi.apache.org)
+ * [Apache Kafka](https://kafka.apache.org)
+ * [Apache Flink](https://flink.apache.org/) 
+ * [Apache Iceberg](https://iceberg.apache.org/)
+ * [Apache Kudu](https://kudu.apache.org/)
