@@ -109,7 +109,31 @@ DESCRIBE FORMATTED ${user_id}_fraud.`fraudulent_txn_iceberg`;
 -- Get Current Count
 select count(*) from ${user_id}_fraud.`fraudulent_txn_iceberg`
  -- 1456146
+````
 
+
+Now that we have some snapshot ids go back to Streaming SQL Console and create the Time_Travel Job:
+
+``` javascript
+-- First, get snapshots ids for the iceberg table
+/* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report
+DESCRIBE HISTORY fraudulent_txn_iceberg; 
+*/
+
+-- Next, complete a basic select with snapshot-id
+select * from fraudulent_txn_iceberg /*+OPTIONS('snapshot-id'='6619035083895556755')*/;
+
+-- Time travel 1 sec stream starting from snap-shot-id
+select * from fraudulent_txn_iceberg /*+OPTIONS('streaming'='true', 'monitor-interval'='1s', 'start-snapshot-id'='4263825941508588099')*/;
+
+-- Select data from start snapshot to end snapshot
+select * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='4263825941508588099', 'end-snapshot-id'='3724519465921078641')*/;
+```
+***
+
+Going deeper with Time Travel and Iceberg, lets go back to Hue UI and work with the following queries:
+
+``` javascript
 -- Get Snap Shot Ids
 DESCRIBE HISTORY ${user_id}_fraud.`fraudulent_txn_iceberg`
 -- copy 2 ids,  one older than the other
@@ -147,28 +171,6 @@ select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_i
   -- americanexpress  115538225
   -- visa             116185432
 ```
-
-Now that we have some snapshot ids and basic understanding of time travel with iceberg, go back to Streaming SQL Console and create the Time_Travel Job:
-
-``` javascript
--- First, get snapshots ids for the iceberg table
-/* In hue (hue-impala-iceberg DataWarehouse) execute the following query to get start-snapshot-id report
-DESCRIBE HISTORY fraudulent_txn_iceberg; 
-*/
-
--- Next, complete a basic select with snapshot-id
-select * from fraudulent_txn_iceberg /*+OPTIONS('snapshot-id'='6619035083895556755')*/;
-
--- Time travel 1 sec stream starting from snap-shot-id
-select * from fraudulent_txn_iceberg /*+OPTIONS('streaming'='true', 'monitor-interval'='1s', 'start-snapshot-id'='4263825941508588099')*/;
-
--- Select data from start snapshot to end snapshot
-select * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='4263825941508588099', 'end-snapshot-id'='3724519465921078641')*/;
-
--- Select data from starting timestamp
-select * from fraudulent_txn_iceberg /*+OPTIONS('as-of-timestamp'='1699425703000')*/;
-```
-***
 
 
 # End Module 2
