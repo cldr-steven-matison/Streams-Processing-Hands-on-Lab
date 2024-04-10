@@ -13,12 +13,12 @@ Attendees should familarize themselves with the content below and take the requi
  * Try Icognito Browser (Chrome & Safari Preferred)
  * Do not copy/paste strings w/ trailing characters.  Use GitHub Copy Buttons.
  * SSB: Create unique userXXX_txn1 and userXXX_txn2 Virtual Tables
- * SSB: Use auto complete to in SSB to get full and correct path to fraudulent_txn_kudu and txn1 and txn2 Join
+ * SSB: Use auto complete to in SSB to get full and correct path to fraudulent_txn_kudu 
 
  ```
  `Kudu`.`default_database`.`user099_fraud.fraudulent_txn_kudu`
  ```
-
+ * SSB: You will need to use auto complete to modify JOINs as follows:
 ```
 FROM  user099_txn1 txn1
 INNER JOIN  user099_txn2 txn2
