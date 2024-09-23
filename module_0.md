@@ -29,31 +29,25 @@ INNER JOIN  user099_txn2 txn2
 
 You will be frequently copy/pasting the following details.  To make sure you get the correct values, use the COPY button top right.
 
-### Workload Password
-
-```
-G0yvxvdms5srhyKF
-```
-
 ### Kafka Brokers
 ```
-csp-hol-kafka-corebroker0.csp-hand.z30z-14kp.cloudera.site:9093,csp-hol-kafka-corebroker1.csp-hand.z30z-14kp.cloudera.site:9093,csp-hol-kafka-corebroker2.csp-hand.z30z-14kp.cloudera.site:9093
+csp-hol-kafka-corebroker2.csa-hol.pn0u-qsh6.cloudera.site:9093, csp-hol-kafka-corebroker1.csa-hol.pn0u-qsh6.cloudera.site:9093, csp-hol-kafka-corebroker0.csa-hol.pn0u-qsh6.cloudera.site:9093
 ```
 ### Schema Registry URL
 ```
-https://csp-hol-kafka-registry0.csp-hand.z30z-14kp.cloudera.site:7790/api/v1
+https://csp-hol-kafka-registry0.csa-hol.pn0u-qsh6.cloudera.site:7790/api/v1
 ```
 
 ### Kudu Masters
 ```
-csp-hol-kudu-master10.csp-hand.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master20.csp-hand.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master30.csp-hand.z30z-14kp.cloudera.site:7051
+csp-hol-kudu-master10.csa-hol.pn0u-qsh6.cloudera.site:7051,csp-hol-kudu-master20.csa-hol.pn0u-qsh6.cloudera.site:7051,csp-hol-kudu-master30.csa-hol.pn0u-qsh6.cloudera.site:7051
 ```
 
 ***
 
 ## How to Login to Cloudera Public Cloud
 
-[Link To Login](https://login.cdpworkshops.cloudera.com/auth/realms/field-marketing-amer/protocol/saml/clients/cdp-sso)
+[Link To Login](https://login.cdpworkshops.cloudera.com/auth/realms/marketing-events1/protocol/saml/clients/cdp-sso)
 
 After login you should see CDP Public Cloud Home Screen
 
