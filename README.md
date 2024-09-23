@@ -28,17 +28,17 @@ During this session, we will create data sources, starting with simple SQL state
 
 ## References
 
-Check out Whats New in [CDP 7.1.9](https://docs.cloudera.com/cdp-private-cloud-base/7.1.9/runtime-release-notes/topics/rt-pvc-whats-new.html) 
+Check out Whats New in [CDP 7.2.18](https://docs.cloudera.com/runtime/7.2.18/release-notes/topics/rt-pubc-whats-new.html) 
 
-Check out Whats new in [CSA 1.11](https://docs.cloudera.com/csa/1.11.0/release-notes/topics/csa-what-new.html)
+Check out Whats new in [CSA 1.12](https://docs.cloudera.com/csa/1.12.0/release-notes/topics/csa-what-new.html)
 
-Check SQL Stream Builder in [CDP Public Cloud SSB](https://docs.cloudera.com/csa/1.11.0/ssb-overview/topics/csa-ssb-key-features.html)
+Check SQL Stream Builder in [CDP Public Cloud SSB](https://docs.cloudera.com/csa/1.12.0/ssb-overview/topics/csa-ssb-key-features.html)
 
-Check out CSA Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.11.0/index.html)
+Check out CSA Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.12.0/index.html)
 
- * [SSB](https://docs.cloudera.com/csa/1.11.0/ssb-overview/topics/csa-ssb-intro.html) 
- * [CSA](https://docs.cloudera.com/csa/1.11.0/index.html) 
- * [HUE]()
+ * [SSB](https://docs.cloudera.com/csa/1.12.0/ssb-overview/topics/csa-ssb-intro.html) 
+ * [CSA](https://docs.cloudera.com/csa/1.12.0/index.html) 
+ * [HUE](https://gethue.com/)
  * [Apache Nifi](https://nifi.apache.org)
  * [Apache Kafka](https://kafka.apache.org)
  * [Apache Flink](https://flink.apache.org/) 
