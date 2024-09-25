@@ -109,6 +109,8 @@ DESCRIBE FORMATTED ${user_id}_fraud.`fraudulent_txn_iceberg`;
 -- Get Current Count
 select count(*) from ${user_id}_fraud.`fraudulent_txn_iceberg`
  -- 1456146
+
+DESCRIBE HISTORY ${user_id}_fraud.`fraudulent_txn_iceberg`; 
 ````
 
 
