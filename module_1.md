@@ -239,7 +239,7 @@ def udf_function(lat1,lon1,lat2,lon2):
 
 From SSB Console :
 
-![15 SSB User Defined Function UDF](/Images/15_SSB_User_Defined_Function_UDF.png)
+![15 SSB User Defined Function UDF test](/Images/15_SSB_User_Defined_Function_UDF.png)
 
 Now, let’s run our query that implements our pattern :
 
