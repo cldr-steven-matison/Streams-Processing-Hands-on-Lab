@@ -211,31 +211,30 @@ Now, we need to filter out :
 
 With SSB, we can create user functions (UDFs) to write functions in JavaScript. Since, there is no out-of-the box function in SSB to calculate the distance between 2 locations, let’s use the UDF feature in order to enhance the functionality of our query. More details on UDF are available [here](https://docs.cloudera.com/csa/1.6.1/ssb-using-js-functions/topics/csa-ssb-creating-js-functions.html)
 
-The Javascript function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula).
+The Python function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
 ``` javascript
-// Haversine distance calculator
+from pyflink.table.udf import udf
+from pyflink.table import DataTypes
+import math
 
-function HAVETOKM(lat1,lon1,lat2,lon2) {
-function toRad(x) {
-return x * Math.PI / 180;
-}
+@udf(result_type=DataTypes.FLOAT())
+def udf_function(lat1,lon1,lat2,lon2):
+    def toRad(x):
+        return float(x) * math.pi / 180
 
-  var R = 6371; // km
-  var x1 = lat2 - lat1;
-  var dLat = toRad(x1);
-  var x2 = lon2 - lon1;
-  var dLon = toRad(x2)
-  var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) *
-    Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
+    R = 6371 # km
+    x1 = lat2 - lat1
+    dLat = toRad(x1)
+    x2 = lon2 - lon1
+    dLon = toRad(x2)
+    a = (math.sin(dLat / 2) * math.sin(dLat / 2) +
+      math.cos(toRad(lat1)) * math.cos(toRad(lat2)) *
+      math.sin(dLon / 2) * math.sin(dLon / 2))
+    c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
+    d = R * c
 
-  // convert to string
-  return (d).toFixed(2).toString();
-}
-HAVETOKM($p0, $p1, $p2, $p3);
+    return d
 ```
 
 From SSB Console :
