@@ -17,6 +17,15 @@
     "batch_size" : 0,
     "enabled" : false
   },
+  "checkpoint_config" : {
+    "enable_checkpointing" : true,
+    "checkpoint_interval_millis" : 600000,
+    "checkpoint_timeout_millis" : 60000,
+    "tolerable_checkpoint_failures" : 2,
+    "checkpoint_mode" : "AT_LEAST_ONCE",
+    "restart_strategy" : "exponential_delay",
+    "exponential_backoff_delay_max_seconds" : 60
+  },
   "runtime_config" : {
     "execution_mode" : "SESSION",
     "parallelism" : 1,
