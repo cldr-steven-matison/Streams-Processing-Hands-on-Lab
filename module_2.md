@@ -9,12 +9,12 @@ In this module we are going to work with SSB and some new capabilities with [Apa
 
 ``` javascript
 -- First, create the ssb iceberg connector
--- drop table if exists `iceberg_hive`;
-CREATE TABLE `iceberg_hive` (
+-- drop table if exists `ssb`.`ssb_default`.`iceberg_hive`;
+CREATE TABLE `ssb`.`ssb_default`.`iceberg_hive` (
 `column_int` INT,
 `column_str` STRING
 ) WITH (
-  'catalog-database' = '${ssb.env.userid}_fraud',
+  'catalog-database' = 'default',
   'connector' = 'iceberg',
   'catalog-type' = 'hive',
   'catalog-name' = 'iceberg_hive_catalog',
@@ -23,10 +23,10 @@ CREATE TABLE `iceberg_hive` (
   'hive-conf-dir' = '/etc/hive/conf'
 );
 -- Next, insert the results
-INSERT INTO iceberg_hive(column_int,column_str) VALUES (1,'test2');
+INSERT INTO `ssb`.`ssb_default`.`iceberg_hive`(column_int,column_str) VALUES (1,'test2');
 
 -- Last, select the results
-Select * from iceberg_hive;
+Select * from `ssb`.`ssb_default`.`iceberg_hive`;
 ```
   Note: Execute the 3 statements individually.  If all 3 statements work, you have a working setup and are ready to go into the next Jobs.
 
@@ -34,6 +34,7 @@ Select * from iceberg_hive;
 
 
 ``` javascript
+//DROP TABLE IF EXISTS `fraudulent_txn_iceberg`
 CREATE TABLE `fraudulent_txn_iceberg` (
   `ts` STRING,
   `account_id` STRING,
@@ -41,26 +42,28 @@ CREATE TABLE `fraudulent_txn_iceberg` (
   `first_name` STRING,
   `last_name` STRING,
   `email` STRING,
+  `gender` STRING,
   `phone` STRING,
   `card` STRING,
-  `lat` DOUBLE,
-  `lon` DOUBLE,
+  `lat` STRING,
+  `lon` STRING,
   `amount` STRING
 ) WITH (
   'engine.hive.enabled' = 'true',
   'catalog-database' = '${ssb.env.userid}_fraud',
   'catalog-name' = 'hive',
+  'catalog-table' = 'fraudulent_txn_iceberg',
   'hive-conf-dir' = '/etc/hive/conf',
   'connector' = 'iceberg',
   'catalog-type' = 'hive'
-)
+)s
 ```
 
 3. Create Insert_Iceberg Job
 
 ``` javascript
-INSERT INTO fraudulent_txn_iceberg
-SELECT EVENT_TIME,ACCOUNT_ID,TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL , cus.phone as PHONE , cus.card as CARD ,LAT, LON, CAST(AMOUNT AS STRING)
+INSERT INTO `fraudulent_txn_iceberg`
+SELECT EVENT_TIME, ACCOUNT_ID, TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , LAT, LON, AMOUNT
 FROM (
 SELECT
 txn1.ts as EVENT_TIME,
@@ -68,10 +71,10 @@ txn2.ts,
 txn1.account_id as ACCOUNT_ID,
 txn1.transaction_id AS TRANSACTION_ID,
 txn2.transaction_id,
-txn1.amount as AMOUNT,
-txn1.lat AS LAT,
-txn1.lon AS LON,
-HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) as distance
+cast(txn1.amount as STRING) as AMOUNT,
+cast(txn1.lat as STRING) AS LAT,
+cast(txn1.lon as STRING) AS LON,
+cast(HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as STRING) as distance
 FROM txn1
 INNER JOIN txn2
 on txn1.account_id=txn2.account_id
@@ -79,7 +82,7 @@ where
 txn1.transaction_id <> txn2.transaction_id
 AND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)
 AND txn1.ts < txn2.ts
-AND HAVETOKM(cast (txn1.lat as string) , cast(txn1.lon as string) , cast(txn2.lat as string) , cast(txn2.lon as string)) > 1
+AND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1
 AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
 ) FRAUD
 JOIN `Kudu`.`default_database`.`default.customers` cus
