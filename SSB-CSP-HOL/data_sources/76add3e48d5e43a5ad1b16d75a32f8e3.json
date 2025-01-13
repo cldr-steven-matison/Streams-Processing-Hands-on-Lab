@@ -1,0 +1,11 @@
+{
+  "id" : "76add3e48d5e43a5ad1b16d75a32f8e3",
+  "name" : "Kudu",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "kudu",
+    "kudu.masters" : "csp-hol-kudu-master10.csa-hol.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master20.csa-hol.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master30.csa-hol.z30z-14kp.cloudera.site:7051"
+  },
+  "custom_truststore" : false
+}

@@ -4,11 +4,11 @@
     "hive-conf-dir" : "/etc/hive/conf",
     "connector" : "iceberg",
     "schema.0.data-type" : "INT",
-    "catalog-database" : "default",
+    "catalog-database" : "${ssb.env.userid}_fraud",
     "catalog-table" : "iceberg_hive",
     "catalog-type" : "hive",
     "schema.1.name" : "column_str",
-    "catalog-name" : "Hive",
+    "catalog-name" : "hive",
     "schema.0.name" : "column_int",
     "schema.1.data-type" : "VARCHAR(2147483647)"
   },

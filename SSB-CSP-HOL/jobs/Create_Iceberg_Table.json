@@ -1,7 +1,7 @@
 {
   "job_name" : "Create_Iceberg_Table",
   "api_endpoints" : [ ],
-  "sql" : "DROP TABLE IF EXISTS `fraudulent_txn_iceberg`\nCREATE TABLE `fraudulent_txn_iceberg` (\n  `ts` STRING,\n  `account_id` STRING,\n  `transaction_id` STRING,\n  `first_name` STRING,\n  `last_name` STRING,\n  `email` STRING,\n  `phone` STRING,\n  `card` STRING,\n  `lat` STRING,\n  `lon` STRING,\n  `distance` STRING,\n  `amount` STRING\n) WITH (\n  'engine.hive.enabled' = 'true',\n  'catalog-database' = '${ssb.env.userid}_fraud',\n  'catalog-name' = 'hive',\n  'hive-conf-dir' = '/etc/hive/conf',\n  'connector' = 'iceberg',\n  'catalog-type' = 'hive'\n)\n\n\n",
+  "sql" : "DROP TABLE IF EXISTS `fraudulent_txn_iceberg`\nCREATE TABLE `fraudulent_txn_iceberg` (\n  `ts` STRING,\n  `account_id` STRING,\n  `transaction_id` STRING,\n  `first_name` STRING,\n  `last_name` STRING,\n  `email` STRING,\n  `phone` STRING,\n  `card` STRING,\n  `lat` STRING,\n  `lon` STRING,\n  `distance` STRING,\n  `amount` STRING\n) WITH (\n  'engine.hive.enabled' = 'true',\n  'catalog-database' = '${ssb.env.userid}_fraud',\n  'catalog-name' = 'hive',\n  'catalog-table' = 'fraudulent_txn_iceberg',\n  'hive-conf-dir' = '/etc/hive/conf',\n  'connector' = 'iceberg',\n  'catalog-type' = 'hive'\n)\n",
   "mv_config" : {
     "name" : "Create_Iceberg_Table",
     "retention" : 300,

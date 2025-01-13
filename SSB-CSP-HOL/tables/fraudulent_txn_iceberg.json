@@ -25,6 +25,7 @@
     "connector" : "iceberg",
     "schema.2.data-type" : "VARCHAR(2147483647)",
     "schema.10.data-type" : "VARCHAR(2147483647)",
+    "catalog-table" : "fraudulent_txn_iceberg",
     "catalog-type" : "hive",
     "schema.9.data-type" : "VARCHAR(2147483647)",
     "schema.4.data-type" : "VARCHAR(2147483647)",

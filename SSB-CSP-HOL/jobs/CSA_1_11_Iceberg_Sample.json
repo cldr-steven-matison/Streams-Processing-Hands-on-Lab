@@ -1,7 +1,7 @@
 {
   "job_name" : "CSA_1_11_Iceberg_Sample",
   "api_endpoints" : [ ],
-  "sql" : "-- First, create the ssb iceberg connector\n-- drop table if exists `iceberg_hive`;\nCREATE TABLE `iceberg_hive` (\n`column_int` INT,\n`column_str` STRING\n) WITH (\n  'catalog-database' = 'default',\n  'connector' = 'iceberg',\n  'catalog-type' = 'hive',\n  'catalog-name' = 'iceberg_hive_catalog',\n  'catalog-table' = 'iceberg_hive_table', \n  'engine.hive.enabled' = 'true',\n  'hive-conf-dir' = '/etc/hive/conf'\n);\n-- Next, insert the results\nINSERT INTO iceberg_hive(column_int,column_str) VALUES (1,'test2');\n\n-- Last, select the results\nSelect * from iceberg_hive;",
+  "sql" : "-- First, create the ssb iceberg connector\n-- drop table if exists `iceberg_hive`;\nCREATE TABLE `iceberg_hive` (\n`column_int` INT,\n`column_str` STRING\n) WITH (\n  'catalog-database' = '${ssb.env.userid}_fraud',\n  'connector' = 'iceberg',\n  'catalog-type' = 'hive',\n  'catalog-name' = 'hive',\n  'catalog-table' = 'iceberg_hive', \n  'engine.hive.enabled' = 'true',\n  'hive-conf-dir' = '/etc/hive/conf'\n);\n-- Next, insert the results\nINSERT INTO `iceberg_hive`(column_int,column_str) VALUES (1,'test2');\n\n-- Last, select the results\nSelect * from `iceberg_hive`;",
   "mv_config" : {
     "name" : "CSA_1_11_Iceberg_Sample",
     "retention" : 300,

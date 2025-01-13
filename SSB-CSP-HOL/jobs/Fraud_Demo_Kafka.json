@@ -1,6 +1,7 @@
 {
   "job_name" : "Fraud_Demo_Kafka",
   "api_endpoints" : [ ],
+  "sql" : "INSERT INTO `Kudu`.`default_database`.`user001_fraud.fraudulent_txn_kudu`\nSELECT EVENT_TIME, ACCOUNT_ID, TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , LAT, LON, AMOUNT\nFROM (\nSELECT\ntxn1.ts as EVENT_TIME,\ntxn2.ts,\ntxn1.account_id as ACCOUNT_ID,\ntxn1.transaction_id AS TRANSACTION_ID,\ntxn2.transaction_id,\ntxn1.amount as AMOUNT,\ntxn1.lat AS LAT,\ntxn1.lon AS LON,\nHAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as distance\nFROM txn1\nINNER JOIN txn2\non txn1.account_id=txn2.account_id\nwhere\ntxn1.transaction_id <> txn2.transaction_id\nAND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)\nAND txn1.ts < txn2.ts\nAND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1\nAND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time\n) FRAUD\nJOIN `Kudu`.`default_database`.`default.customers` cus\nON cus.account_id = FRAUD.ACCOUNT_ID",
   "mv_config" : {
     "name" : "Fraud_Demo_Kafka",
     "retention" : 300,
@@ -19,7 +20,7 @@
   "runtime_config" : {
     "execution_mode" : "SESSION",
     "parallelism" : 1,
-    "sample_interval" : 1000,
+    "sample_interval" : 0,
     "sample_count" : 100,
     "window_size" : 100,
     "start_with_savepoint" : false,
