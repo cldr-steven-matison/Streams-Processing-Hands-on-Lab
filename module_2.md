@@ -5,28 +5,28 @@ In this module we are going to work with SSB and some new capabilities with [Apa
 
 ## Create Iceberg Jobs in SSB
 
-1. Create CSA 1.11 Sample Job
+1. Create CSA_Sample Job
 
 ``` javascript
 -- First, create the ssb iceberg connector
--- drop table if exists `ssb`.`ssb_default`.`iceberg_hive`;
-CREATE TABLE `ssb`.`ssb_default`.`iceberg_hive` (
+-- drop table if exists `iceberg_hive`;
+CREATE TABLE `iceberg_hive` (
 `column_int` INT,
 `column_str` STRING
 ) WITH (
-  'catalog-database' = 'default',
+  'catalog-database' = '${ssb.env.userid}_fraud',
   'connector' = 'iceberg',
   'catalog-type' = 'hive',
-  'catalog-name' = 'iceberg_hive_catalog',
-  'catalog-table' = 'iceberg_hive_table', 
+  'catalog-name' = 'hive',
+  'catalog-table' = 'iceberg_hive', 
   'engine.hive.enabled' = 'true',
   'hive-conf-dir' = '/etc/hive/conf'
 );
 -- Next, insert the results
-INSERT INTO `ssb`.`ssb_default`.`iceberg_hive`(column_int,column_str) VALUES (1,'test2');
+INSERT INTO `iceberg_hive`(column_int,column_str) VALUES (1,'test2');
 
 -- Last, select the results
-Select * from `ssb`.`ssb_default`.`iceberg_hive`;
+SELECT * FROM `iceberg_hive`;
 ```
   Note: Execute the 3 statements individually.  If all 3 statements work, you have a working setup and are ready to go into the next Jobs.
 
@@ -56,7 +56,7 @@ CREATE TABLE `fraudulent_txn_iceberg` (
   'hive-conf-dir' = '/etc/hive/conf',
   'connector' = 'iceberg',
   'catalog-type' = 'hive'
-)s
+)
 ```
 
 3. Create Insert_Iceberg Job
