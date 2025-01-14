@@ -9,9 +9,8 @@ During this session, we will create data sources, starting with simple SQL state
 ## Lab Highlights
 
 - Use SQL Stream Builder to define tables as sources and sinks using DDL statements.
-- Execute a job, correct errors, and monitor running jobs and performance which will run in Apache Flink
-- Create an end-to-end stream processor using SQL.
-- Pull data from Kafka and push data to Kafka from the interface
+- Execute a jobs, correct errors, and monitor running jobs and performance which will run in Apache Flink
+- Pull data from Kafka, Join with RDBS, and push data to Apache Kudu and Apache Iceberg
 - Use SQL Stream Builder to test new features with Apache Iceberg
 
 ## Setup
