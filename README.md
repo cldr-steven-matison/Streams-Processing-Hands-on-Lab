@@ -8,10 +8,11 @@ During this session, we will create data sources, starting with simple SQL state
 
 ## Lab Highlights
 
+- Introduction to Cloudera on AWS and SQL Stream Builder
 - Use SQL Stream Builder to define tables as sources and sinks using DDL statements.
-- Execute a jobs, correct errors, and monitor running jobs and performance which will run in Apache Flink
-- Pull data from Kafka, Join with RDBS, and push data to Apache Kudu and Apache Iceberg
-- Use SQL Stream Builder to test new features with Apache Iceberg
+- Execute a jobs, correct errors, and monitor running jobs in Apache Flink
+- Pull data from Kafka, join other data sources, and push data to Apache Kudu and Apache Iceberg
+- Use SQL Stream Builder to investigate new features with Apache Iceberg
 
 ## Setup
 
