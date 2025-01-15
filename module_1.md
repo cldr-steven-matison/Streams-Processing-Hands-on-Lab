@@ -3,6 +3,10 @@
 
 In this module we are going to work with SSB to build out a Fraud Detection Use case.
 
+## Apache Kafka
+
+Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging Manager](/Images/09_Streams_Messaging_Manager.png)
+
 ## Hue Database Setup
 
 Switch to your HUE UI and execute the following statements:

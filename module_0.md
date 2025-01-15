@@ -103,6 +103,6 @@ Click Unlock Keytab:
 
 ## End Module 0
 
-You are now ready to get started on [Module 1: Introduction to SQL Stream Builder](module_1.md).
+You are now ready to get started on [Module 1: Fraud Detection with Apache Kudu and SQL Stream Builder](module_1.md).
 
 ***

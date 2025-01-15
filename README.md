@@ -21,7 +21,7 @@ During this session, we will create data sources, starting with simple SQL state
 
 ### [Module 0: HOL Getting Started](module_0.md)
 
-### [Module 1: Introduction to SQL Stream Builder](module_1.md)
+### [Module 1: Fraud Detection with Apache Kudu and SQL Stream Builder](module_1.md)
 
 ### [Module 2: Introduction to Apache Iceberg with SQL Stream Builder](module_2.md)
 
@@ -124,6 +124,5 @@ The NiFi Data Flow will also stream a fraudulent transaction with the same accou
 
 ```
 
-The generated transactional events will be ingested in apache Kafka.
+The generated transactional events will be ingested in Apache Kafka.
 
-Use SMM to check we have messages coming in Apache Kafka: ![09 Streams Messaging Manager](/Images/09_Streams_Messaging_Manager.png)
