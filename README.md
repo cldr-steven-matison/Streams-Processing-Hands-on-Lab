@@ -28,13 +28,13 @@ During this session, we will create data sources, starting with simple SQL state
 
 ## References
 
-Check out Whats New in [CDP 7.3.1](https://docs.cloudera.com/runtime/7.3.1/public-release-notes/topics/rt-whats-new.html) 
+Check out Whats New in [Cloudera 7.3.1](https://docs.cloudera.com/runtime/7.3.1/public-release-notes/topics/rt-whats-new.html) 
 
-Check out Whats new in [CSA 1.14](https://docs.cloudera.com/csa/1.14.0/release-notes/topics/csa-what-new.html)
+Check out Whats new in [Cloudera Streaming Analytics 1.14](https://docs.cloudera.com/csa/1.14.0/release-notes/topics/csa-what-new.html)
 
-Check SQL Stream Builder in [CDP Public Cloud SSB](https://docs.cloudera.com/csa/1.14.0/ssb-overview/topics/csa-ssb-key-features.html)
+Check SQL Stream Builder in [Cloudera Sql Stream Builder](https://docs.cloudera.com/csa/1.14.0/ssb-overview/topics/csa-ssb-key-features.html)
 
-Check out CSA Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.14.0/index.html)
+Check out the Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.14.0/index.html)
 
  * [SSB](https://docs.cloudera.com/csa/1.14.0/ssb-overview/topics/csa-ssb-intro.html) 
  * [CSA](https://docs.cloudera.com/csa/1.14.0/index.html) 
