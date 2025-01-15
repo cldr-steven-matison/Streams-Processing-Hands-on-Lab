@@ -135,7 +135,7 @@ Now, we need to filter out :
 - Within an interval of 10 minutes,
 - Remember, the fraudulent transactions have a prefix of 'xxx'.
 
-With SSB, we can create user functions (UDFs) to write functions in Python. Since, there is no out-of-the box function in SSB to calculate the distance between 2 locations, let’s use the UDF feature in order to enhance the functionality of our query. More details on UDF are available [here](https://docs.cloudera.com/cdf-datahub/7.3.1/how-to-ssb/topics/csa-ssb-add-python-udf.html)
+With SSB, we can create user functions (UDFs) to write functions in Python. Since, there is no out-of-the box function in SSB to calculate the distance between 2 locations, let’s use the UDF feature in order to enhance the functionality of our query. More details on UDF are available [here](https://docs.cloudera.com/cdf-datahub/7.3.1/how-to-ssb/topics/csa-ssb-add-python-udf.html).
 
 The Python function will use the [Haversine_formula](https://en.wikipedia.org/wiki/Haversine_formula).
 
@@ -198,7 +198,7 @@ where
 
 In the previous paragraph, we have taken an inbound stream of events and used SSB to detect transactions that look potentially fraudulent. However, we only have account_id, transaction_id and location attributes. Not really useful. We can enrich these transactions by joining the previous results with some metadata information like username, firstname,address,phone from the "customer" Apache Kudu table. We will write back the results in another Kudu table called "fraudulent_txn_kudu".
 
-Now, let's build the final Insert Query.  Be sure to use auto complete to find your fraudulent_txn_kudu Table.
+Now, let's build the final Insert Query.  Be sure to use auto complete to find your fraudulent_txn_kudu table.
 
 ``` javascript
 INSERT INTO fraudulent_txn_kudu

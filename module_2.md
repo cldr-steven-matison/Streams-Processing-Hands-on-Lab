@@ -1,6 +1,6 @@
 # Introduction to Apache Iceberg with SQL Stream Builder
  
-In this module we are going to work with SSB and some new capabilities with [Apache Iceberg](https://iceberg.apache.org/) found with CSA 1.11 and CDP 7.1.9.
+In this module we are going to work with SSB and some new capabilities with [Apache Iceberg](https://iceberg.apache.org/) found with CSA 1.14 and CDP 7.3.1.
 
 
 ## Create Iceberg Jobs in SSB
@@ -134,6 +134,8 @@ select * from fraudulent_txn_iceberg /*+OPTIONS('streaming'='true', 'monitor-int
 -- Select data from start snapshot to end snapshot
 select * from fraudulent_txn_iceberg /*+OPTIONS('start-snapshot-id'='4263825941508588099', 'end-snapshot-id'='3724519465921078641')*/;
 ```
+Note: Execute the 3 statements individually.
+
 ***
 
 Going deeper with Time Travel and Iceberg, lets go back to Hue UI and work with the following queries:
