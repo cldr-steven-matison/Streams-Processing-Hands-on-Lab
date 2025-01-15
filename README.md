@@ -126,3 +126,5 @@ The NiFi Data Flow will also stream a fraudulent transaction with the same accou
 
 The generated transactional events will be ingested in Apache Kafka.
 
+
+To kick things off go to [Module 0: HOL Getting Started](module_0.md).
