@@ -1,0 +1,12 @@
+{
+  "id" : "255d92e558fe494082809326c878b29d",
+  "name" : "Schema Registry",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "cloudera-registry",
+    "kafka.provider.id" : "555dd29bd15f45ccb5b2d9a571249027",
+    "registry.address" : "https://dim26-kafka-corezookeeper0.dim26-cd.vayb-xokg.cloudera.site:7790/api/v1"
+  },
+  "custom_truststore" : false
+}

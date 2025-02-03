@@ -1,0 +1,11 @@
+{
+  "id" : "555dd29bd15f45ccb5b2d9a571249027",
+  "name" : "DimKafka",
+  "type" : "kafka",
+  "properties" : {
+    "brokers" : "dim26-kafka-corebroker2.dim26-cd.vayb-xokg.cloudera.site:9093, dim26-kafka-corebroker1.dim26-cd.vayb-xokg.cloudera.site:9093, dim26-kafka-corebroker0.dim26-cd.vayb-xokg.cloudera.site:9093",
+    "protocol" : "sasl",
+    "mechanism" : "KERBEROS"
+  },
+  "custom_truststore" : false
+}

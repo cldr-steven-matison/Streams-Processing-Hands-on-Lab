@@ -1,0 +1,11 @@
+{
+  "id" : "d494ce45b5b54d41ae927e9b335a4d38",
+  "name" : "Kudu",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "kudu",
+    "kudu.masters" : "dim26-kudu-master10.dim26-cd.vayb-xokg.cloudera.site:7051,dim26-kudu-master20.dim26-cd.vayb-xokg.cloudera.site:7051,dim26-kudu-master30.dim26-cd.vayb-xokg.cloudera.site:7051"
+  },
+  "custom_truststore" : false
+}

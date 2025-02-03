@@ -1,0 +1,29 @@
+{
+  "job_name" : "Simple_Select",
+  "api_endpoints" : [ ],
+  "sql" : "SELECT\n      txn1.ts as EVENT_TIME,\n      txn2.ts,\n      txn1.account_id as ACCOUNT_ID,\n      txn1.transaction_id AS TRANSACTION_ID,\n      txn2.transaction_id,\n      txn1.amount as AMOUNT,\n      txn1.lat AS LAT,\n      txn1.lon AS LON,\n      HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as distance\n\nFROM  txn1\nINNER JOIN  txn2\n      on txn1.account_id=txn2.account_id\nwhere\n      txn1.transaction_id <> txn2.transaction_id\n      AND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)\n      AND txn1.ts < txn2.ts\n      AND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1\n      AND txn2.event_time  BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time",
+  "mv_config" : {
+    "name" : "Simple_Select",
+    "retention" : 300,
+    "min_row_retention_count" : 0,
+    "recreate" : false,
+    "key_column_name" : null,
+    "column_indices_disabled" : false,
+    "indexed_columns" : [ ],
+    "not_indexed_columns" : [ ],
+    "api_key" : null,
+    "ignore_nulls" : false,
+    "require_restart" : false,
+    "batch_size" : 0,
+    "enabled" : false
+  },
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "parallelism" : 1,
+    "sample_interval" : 1000,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "log_config" : null
+  }
+}

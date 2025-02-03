@@ -20,13 +20,13 @@
     "format" : "json",
     "schema.6.data-type" : "TIMESTAMP(3) WITH LOCAL TIME ZONE",
     "schema.1.data-type" : "VARCHAR(2147483647)",
-    "connector" : "kafka: Kafka",
+    "connector" : "kafka: DimKafka",
     "schema.2.data-type" : "VARCHAR(2147483647)",
     "schema.watermark.0.rowtime" : "event_time",
     "properties.transaction.timeout.ms" : "900000",
     "topic" : "txn2",
     "schema.4.data-type" : "DOUBLE",
-    "ssb.schema.text" : "{\n  \"type\": \"record\",\n  \"name\": \"inferredSchema\",\n  \"fields\": [\n    {\n      \"name\": \"ts\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2025-01-09 14:46:29\\\"'\"\n    },\n    {\n      \"name\": \"account_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"177\\\"'\"\n    },\n    {\n      \"name\": \"transaction_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"82e521a1-ce98-11ef-a775-660448f82513\\\"'\"\n    },\n    {\n      \"name\": \"amount\",\n      \"type\": \"long\",\n      \"doc\": \"Type inferred from '1886'\"\n    },\n    {\n      \"name\": \"lat\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '48.8534'\"\n    },\n    {\n      \"name\": \"lon\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '2.3488'\"\n    }\n  ]\n}",
+    "ssb.schema.text" : "{\n  \"type\": \"record\",\n  \"name\": \"inferredSchema\",\n  \"fields\": [\n    {\n      \"name\": \"ts\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"2025-01-31 13:22:40\\\"'\"\n    },\n    {\n      \"name\": \"account_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"302\\\"'\"\n    },\n    {\n      \"name\": \"transaction_id\",\n      \"type\": \"string\",\n      \"doc\": \"Type inferred from '\\\"72595fee-dfd6-11ef-af8a-f270bc841e7c\\\"'\"\n    },\n    {\n      \"name\": \"amount\",\n      \"type\": \"long\",\n      \"doc\": \"Type inferred from '1258'\"\n    },\n    {\n      \"name\": \"lat\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '43.2961743'\"\n    },\n    {\n      \"name\": \"lon\",\n      \"type\": \"double\",\n      \"doc\": \"Type inferred from '5.3699525'\"\n    }\n  ]\n}",
     "ssb.watermark_spec" : {
       "timestamp_column" : "__ssb_kafka_timestamp",
       "rowtime_column" : "event_time"
