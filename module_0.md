@@ -31,7 +31,9 @@ You will be frequently copy/pasting the following details.  To make sure you get
 
 ### Kafka Brokers
 ```
-cdf-aw-kafka-demo-corebroker0.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker2.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker1.go01-dem.ylcu-atmi.cloudera.site:9093``
+cdf-aw-kafka-demo-corebroker0.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker2.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker1.go01-dem.ylcu-atmi.cloudera.site:9093
+```
+
 ### Schema Registry URL
 ```
 https://cdf-aw-kafka-demo-master0.go01-dem.ylcu-atmi.cloudera.site:7790/api/v1
