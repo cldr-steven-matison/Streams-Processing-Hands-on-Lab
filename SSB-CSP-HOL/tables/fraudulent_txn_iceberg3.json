@@ -2,7 +2,7 @@
   "metadata" : {
     "schema.7.data-type" : "VARCHAR(2147483647)",
     "schema.0.data-type" : "VARCHAR(2147483647)",
-    "schema.11.data-type" : "VARCHAR(2147483647)",
+    "schema.11.data-type" : "BIGINT",
     "schema.9.name" : "lat",
     "schema.11.name" : "amount",
     "schema.1.name" : "account_id",
@@ -23,16 +23,16 @@
     "schema.1.data-type" : "VARCHAR(2147483647)",
     "hive-conf-dir" : "/etc/hive/conf",
     "schema.2.data-type" : "VARCHAR(2147483647)",
-    "schema.10.data-type" : "VARCHAR(2147483647)",
+    "schema.10.data-type" : "DOUBLE",
     "connector" : "iceberg",
     "catalog-table" : "fraudulent_txn_iceberg",
     "catalog-type" : "hive",
-    "schema.9.data-type" : "VARCHAR(2147483647)",
+    "schema.9.data-type" : "DOUBLE",
     "schema.4.data-type" : "VARCHAR(2147483647)",
     "schema.10.name" : "lon",
     "schema.8.name" : "card"
   },
   "type" : "ssb",
-  "table_name" : "fraudulent_txn_iceberg",
+  "table_name" : "fraudulent_txn_iceberg3",
   "transform_code_b64_encoded" : false
 }
