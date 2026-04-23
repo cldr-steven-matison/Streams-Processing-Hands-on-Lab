@@ -1,0 +1,12 @@
+{
+  "id" : "8bc9090e3e664ea2880ee4d70c3a74b8",
+  "name" : "Schema Registry",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "cloudera-registry",
+    "kafka.provider.id" : "8c5026bf1fde45c68d6f571dc996a6ae",
+    "registry.address" : "https://cdf-aw-kafka-demo-master0.go01-dem.ylcu-atmi.cloudera.site:7790/api/v1"
+  },
+  "custom_truststore" : false
+}

@@ -1,0 +1,33 @@
+{
+  "metadata" : {
+    "schema.0.data-type" : "VARCHAR(2147483647)",
+    "schema.1.name" : "amount",
+    "scan.startup.mode" : "earliest-offset",
+    "schema.4.name" : "lat",
+    "schema.3.data-type" : "VARCHAR(2147483647)",
+    "schema.6.metadata" : "timestamp",
+    "schema.3.name" : "account_id",
+    "schema.watermark.0.strategy.data-type" : "TIMESTAMP(3) WITH LOCAL TIME ZONE",
+    "properties.request.timeout.ms" : "120000",
+    "schema.6.name" : "event_time",
+    "schema.5.data-type" : "VARCHAR(2147483647)",
+    "schema.6.virtual" : "false",
+    "schema.0.name" : "transaction_id",
+    "schema.5.name" : "ts",
+    "schema.watermark.0.strategy.expr" : "`event_time` - INTERVAL '3' SECOND",
+    "properties.auto.offset.reset" : "earliest",
+    "schema.2.name" : "lon",
+    "format" : "json",
+    "schema.6.data-type" : "TIMESTAMP(3) WITH LOCAL TIME ZONE",
+    "schema.1.data-type" : "BIGINT",
+    "schema.2.data-type" : "DOUBLE",
+    "connector" : "kafka: Kafka",
+    "schema.watermark.0.rowtime" : "event_time",
+    "properties.transaction.timeout.ms" : "900000",
+    "topic" : "txn2",
+    "schema.4.data-type" : "DOUBLE"
+  },
+  "type" : "ssb",
+  "table_name" : "srm_txn2",
+  "transform_code_b64_encoded" : false
+}

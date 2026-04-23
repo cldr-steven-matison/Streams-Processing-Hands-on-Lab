@@ -1,0 +1,11 @@
+{
+  "id" : "51825178008c4722a37f5747e53b05dc",
+  "name" : "Kudu",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "kudu",
+    "masters" : "go01-aws-rtdm-master10.go01-dem.ylcu-atmi.cloudera.site:7051,go01-aws-rtdm-master20.go01-dem.ylcu-atmi.cloudera.site:7051,go01-aws-rtdm-master30.go01-dem.ylcu-atmi.cloudera.site:7051"
+  },
+  "custom_truststore" : false
+}

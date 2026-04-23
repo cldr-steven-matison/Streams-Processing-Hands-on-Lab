@@ -1,0 +1,11 @@
+{
+  "id" : "8c5026bf1fde45c68d6f571dc996a6ae",
+  "name" : "Kafka",
+  "type" : "kafka",
+  "properties" : {
+    "brokers" : "cdf-aw-kafka-demo-corebroker0.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker2.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker1.go01-dem.ylcu-atmi.cloudera.site:9093",
+    "protocol" : "sasl",
+    "mechanism" : "KERBEROS"
+  },
+  "custom_truststore" : false
+}

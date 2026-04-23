@@ -1,7 +1,7 @@
 {
   "job_name" : "Working_Insert_Iceberg",
   "api_endpoints" : [ ],
-  "sql" : "INSERT INTO `fraudulent_txn_iceberg`\nSELECT EVENT_TIME, ACCOUNT_ID, TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , LAT, LON, AMOUNT\nFROM (\nSELECT\ntxn1.ts as EVENT_TIME,\ntxn2.ts,\ntxn1.account_id as ACCOUNT_ID,\ntxn1.transaction_id AS TRANSACTION_ID,\ntxn2.transaction_id,\ncast(txn1.amount as STRING) as AMOUNT,\ncast(txn1.lat as STRING) AS LAT,\ncast(txn1.lon as STRING) AS LON,\ncast(HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as STRING) as distance\nFROM txn1\nINNER JOIN txn2\non txn1.account_id=txn2.account_id\nwhere\ntxn1.transaction_id <> txn2.transaction_id\nAND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)\nAND txn1.ts < txn2.ts\nAND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1\nAND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time\n) FRAUD\nJOIN `Kudu`.`default_database`.`default.customers` cus\nON cus.account_id = FRAUD.ACCOUNT_ID",
+  "sql" : "INSERT INTO `fraudulent_txn_iceberg`\nSELECT EVENT_TIME, ACCOUNT_ID, TRANSACTION_ID, cus.first_name as FIRST_NAME ,cus.last_name as LAST_NAME,cus.email as EMAIL ,cus.gender as GENDER, cus.phone as PHONE , cus.card as CARD , LAT, LON, AMOUNT\nFROM (\nSELECT\ntxn1.ts as EVENT_TIME,\ntxn2.ts,\ntxn1.account_id as ACCOUNT_ID,\ntxn1.transaction_id AS TRANSACTION_ID,\ntxn2.transaction_id,\ntxn1.amount as AMOUNT,\ntxn1.lat AS LAT,\ntxn1.lon AS LON,\nHAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as distance\nFROM srm_txn1 as txn1\nINNER JOIN srm_txn2 as txn2\non txn1.account_id=txn2.account_id\nwhere\ntxn1.transaction_id <> txn2.transaction_id\nAND (txn1.lat <> txn2.lat OR txn1.lon <> txn2.lon)\nAND txn1.ts < txn2.ts\nAND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1\nAND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time\n) FRAUD\nJOIN `Kudu`.`default`.`srm_fraud.customers` cus\nON cus.account_id = FRAUD.ACCOUNT_ID",
   "mv_config" : {
     "name" : "Working_Insert_Iceberg",
     "retention" : 300,
@@ -24,15 +24,18 @@
     "tolerable_checkpoint_failures" : 2,
     "checkpoint_mode" : "AT_LEAST_ONCE",
     "restart_strategy" : "exponential_delay",
-    "exponential_backoff_delay_max_seconds" : 60
+    "exponential_backoff_delay_max_seconds" : 60,
+    "checkpoint_directory_path" : null
   },
   "runtime_config" : {
     "execution_mode" : "SESSION",
+    "runtime_mode" : "STREAMING",
     "parallelism" : 1,
     "sample_interval" : 1000,
     "sample_count" : 100,
     "window_size" : 100,
     "start_with_savepoint" : false,
+    "savepoint_directory_path" : null,
     "log_config" : {
       "type" : "LOG4J_PROPERTIES",
       "content" : "\nrootLogger.level = INFO\nrootLogger.appenderRef.file.ref = MainAppender\n#Uncomment this if you want to _only_ change Flink's logging\n#logger.flink.name = org.apache.flink\n#logger.flink.level = INFO\n\n# The following lines keep the log level of common libraries/connectors on\n# log level INFO. The root logger does not override this. You have to manually\n# change the log levels here.\nlogger.akka.name = akka\nlogger.akka.level = INFO\nlogger.kafka.name= org.apache.kafka\nlogger.kafka.level = INFO\nlogger.hadoop.name = org.apache.hadoop\nlogger.hadoop.level = INFO\nlogger.zookeeper.name = org.apache.zookeeper\nlogger.zookeeper.level = INFO\n\n# Log all infos in the given file\nappender.main.name = MainAppender\nappender.main.type = File\nappender.main.append = false\nappender.main.fileName = /var/log/ssb\nappender.main.layout.type = PatternLayout\nappender.main.layout.pattern = %d{yyyy-MM-dd HH:mm:ss,SSS} %-5p %-60c %x - %m%n\n\n# Suppress the irrelevant (wrong) warnings from the Netty channel handler\nlogger.netty.name = org.apache.flink.shaded.akka.org.jboss.netty.channel.DefaultChannelPipeline\nlogger.netty.level = OFF\n"
