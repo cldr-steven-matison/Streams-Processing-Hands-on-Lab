@@ -31,16 +31,15 @@ You will be frequently copy/pasting the following details.  To make sure you get
 
 ### Kafka Brokers
 ```
-csp-hol-kafka-corebroker2.csa-hol.z30z-14kp.cloudera.site:9093, csp-hol-kafka-corebroker1.csa-hol.z30z-14kp.cloudera.site:9093, csp-hol-kafka-corebroker0.csa-hol.z30z-14kp.cloudera.site:9093
-```
+cdf-aw-kafka-demo-corebroker0.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker2.go01-dem.ylcu-atmi.cloudera.site:9093, cdf-aw-kafka-demo-corebroker1.go01-dem.ylcu-atmi.cloudera.site:9093``
 ### Schema Registry URL
 ```
-https://csp-hol-kafka-registry0.csa-hol.z30z-14kp.cloudera.site:7790/api/v1
+https://cdf-aw-kafka-demo-master0.go01-dem.ylcu-atmi.cloudera.site:7790/api/v1
 ```
 
 ### Kudu Masters
 ```
-csp-hol-kudu-master10.csa-hol.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master20.csa-hol.z30z-14kp.cloudera.site:7051,csp-hol-kudu-master30.csa-hol.z30z-14kp.cloudera.site:7051
+go01-aws-rtdm-master10.go01-dem.ylcu-atmi.cloudera.site:7051,go01-aws-rtdm-master20.go01-dem.ylcu-atmi.cloudera.site:7051,go01-aws-rtdm-master30.go01-dem.ylcu-atmi.cloudera.site:7051
 ```
 
 ***
