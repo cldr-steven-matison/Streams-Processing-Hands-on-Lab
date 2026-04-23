@@ -1,7 +1,7 @@
 {
   "job_name" : "Create_Iceberg_New",
   "api_endpoints" : [ ],
-  "sql" : "CREATE TABLE fraudulent_txn_iceberg4 (\n  `ts` VARCHAR(2147483647),\n  `account_id` VARCHAR(2147483647),\n  `transaction_id` VARCHAR(2147483647),\n  `first_name` VARCHAR(2147483647),\n  `last_name` VARCHAR(2147483647),\n  `email` VARCHAR(2147483647),\n  `gender` VARCHAR(2147483647),\n  `phone` VARCHAR(2147483647),\n  `card` VARCHAR(2147483647),\n  `lat` VARCHAR(2147483647),\n  `lon` VARCHAR(2147483647),\n  `amount` VARCHAR(2147483647)\n) WITH (\n  'engine.hive.enabled' = 'true',\n  'hive-conf-dir' = '/etc/hive/conf',\n  'connector' = 'iceberg',\n  'catalog-database' = 'srm_fraud',\n  'catalog-table' = 'fraudulent_txn_iceberg',\n  'catalog-type' = 'hive',\n  'catalog-name' = 'hive'\n)",
+  "sql" : "CREATE TABLE fraudulent_txn_iceberg (\n  `ts` VARCHAR(2147483647),\n  `account_id` VARCHAR(2147483647),\n  `transaction_id` VARCHAR(2147483647),\n  `first_name` VARCHAR(2147483647),\n  `last_name` VARCHAR(2147483647),\n  `email` VARCHAR(2147483647),\n  `gender` VARCHAR(2147483647),\n  `phone` VARCHAR(2147483647),\n  `card` VARCHAR(2147483647),\n  `lat` VARCHAR(2147483647),\n  `lon` VARCHAR(2147483647),\n  `amount` VARCHAR(2147483647)\n) WITH (\n  'engine.hive.enabled' = 'true',\n  'hive-conf-dir' = '/etc/hive/conf',\n  'connector' = 'iceberg',\n  'catalog-database' = 'srm_fraud',\n  'catalog-table' = 'fraudulent_txn_iceberg',\n  'catalog-type' = 'hive',\n  'catalog-name' = 'hive'\n)",
   "mv_config" : {
     "name" : "Create_Iceberg_New",
     "retention" : 300,
