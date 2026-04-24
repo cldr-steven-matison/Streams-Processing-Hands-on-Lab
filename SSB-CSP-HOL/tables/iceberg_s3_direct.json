@@ -1,0 +1,16 @@
+{
+  "metadata" : {
+    "connector" : "iceberg",
+    "schema.0.data-type" : "INT",
+    "catalog-database" : "fraud_db",
+    "catalog-type" : "hadoop",
+    "schema.1.name" : "column_str",
+    "catalog-name" : "s3_catalog",
+    "warehouse" : "s3://srm-nifi-demo/iceberg-warehouse/",
+    "schema.0.name" : "column_int",
+    "schema.1.data-type" : "VARCHAR(2147483647)"
+  },
+  "type" : "ssb",
+  "table_name" : "iceberg_s3_direct",
+  "transform_code_b64_encoded" : false
+}
