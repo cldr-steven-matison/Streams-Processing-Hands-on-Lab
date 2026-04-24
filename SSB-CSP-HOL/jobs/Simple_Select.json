@@ -1,0 +1,50 @@
+{
+  "job_name" : "Simple_Select",
+  "api_endpoints" : [ ],
+  "sql" : "--test Execute Selections\nselect * from txn1;\nselect * from txn2;",
+  "mv_config" : {
+    "name" : "Simple_Select",
+    "retention" : 300,
+    "min_row_retention_count" : 0,
+    "recreate" : false,
+    "key_column_name" : null,
+    "column_indices_disabled" : false,
+    "indexed_columns" : [ ],
+    "not_indexed_columns" : [ ],
+    "api_key" : null,
+    "ignore_nulls" : false,
+    "require_restart" : false,
+    "batch_size" : 0,
+    "enabled" : false
+  },
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "runtime_mode" : "STREAMING",
+    "parallelism" : 1,
+    "sample_interval" : 1000,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "savepoint_directory_path" : null,
+    "log_config" : null
+  },
+  "kubernetes_config" : {
+    "kubernetes_deployment_mode" : "NATIVE",
+    "restart_failed_job" : false,
+    "job_manager_replicas" : 1,
+    "job_manager_resource_config" : {
+      "cpu_request" : null,
+      "memory_request" : null,
+      "cpu_limit" : null,
+      "memory_limit" : null,
+      "ephemeral_storage" : null
+    },
+    "task_manager_resource_config" : {
+      "cpu_request" : null,
+      "memory_request" : null,
+      "cpu_limit" : null,
+      "memory_limit" : null,
+      "ephemeral_storage" : null
+    }
+  }
+}
