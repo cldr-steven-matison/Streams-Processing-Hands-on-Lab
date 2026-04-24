@@ -9,11 +9,14 @@ In the go01-demo-aws environment:
  * Flow Management Data Hub (NIFI) : go01-aws-nifi
  * Streams Messaging Data Hub (KAFKA): cdf-aw-kakfa-demo
  * Streams Analytics Data Hub (FLINK/SSB) : go01-flink-ssb 
- * Real Time Data Warehouse Data Hub (Impala/Kudu) : go01-datamart
+ * Real Time Data Warehouse Data Hub (Impala/Kudu) : go01-aws-rtdm
 
+!!! TIP
+    Switch this repo branch to `goes-gold` and import the `SSB-CSP-HOL` project.
 
+    The source control integration with github is a valuable way to deliver projects across environments.  There are branches for sandbox, goes-gold, and minikube which should import and operate with minimal setup.
 
-For this lab you will create an environment (in the marketing tenant) and the following Data Hubs:
+For this lab you will create an environment and the following Data Hubs:
 
  * Streams Messaging Data Hub (KAFKA): csp-hol-kafka
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
@@ -74,7 +77,11 @@ Add the following schema to the Schema Registry
 
 [NiFi Flow Definition File](/assets/Fraud_Detection_Demo_Dataflow.json)
 
-You can deploy this flow in a Nifi Data Hub or in Dataflow.  The setup should be same, you just need to provide the appropriate parameters.
+
+There is a new [2026 NiFi 2.0 Fraud Flow](/assets/Dataflow_Fraud_Demo_2026_cAI.json) with a [Custom NiFi 2.o Python Processor](/assets/NewTransactionGenerator.py) to deploy this flow in DataFlow.
+
+
+You can still deploy the original NiFi 1.x flow (with ExecuteScript) in a Nifi Data Hub or in DataFlow.  The setup should be same, you just need to provide the appropriate parameters.
 
 ![00 NiFi Data Flow Parameters](/Images/00_NiFi_Data_Flow_Parameters.png)
 
