@@ -85,7 +85,7 @@ AND txn1.ts < txn2.ts
 AND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1
 AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
 ) FRAUD
-JOIN `Kudu`.`default_database`.`default.customers` cus
+JOIN `Kudu`.`default`.`default.customers` cus
 ON cus.account_id = FRAUD.ACCOUNT_ID
 ```
 
@@ -185,4 +185,3 @@ select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_i
 Congratulations, you made it to the end of the first Cloudera Sql Stream Builder Hands On Lab.  If you completed everything you should now be able to confirm your SSB Project looks very similar to full SSB-CSP-HOL Project.
 
 ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
-
