@@ -12,7 +12,7 @@ In the go01-demo-aws environment:
  * Real Time Data Warehouse Data Hub (Impala/Kudu) : go01-aws-rtdm
 
 !!! TIP
-    Switch this repo branch to `goes-gold` and import the `SSB-CSP-HOL` project.
+    Switch this repo switch to the appropriate branch and import the `SSB-CSP-HOL` project.
 
     The source control integration with github is a valuable way to deliver projects across environments.  There are branches for sandbox, goes-gold, and minikube which should import and operate with minimal setup.
 
@@ -78,7 +78,7 @@ Add the following schema to the Schema Registry
 [NiFi Flow Definition File](/assets/Fraud_Detection_Demo_Dataflow.json)
 
 
-There is a new [2026 NiFi 2.0 Fraud Flow](/assets/Dataflow_Fraud_Demo_2026_cAI.json) with a [Custom NiFi 2.o Python Processor](/assets/NewTransactionGenerator.py) to deploy this flow in DataFlow.
+There is a new [2026 NiFi 2.0 Fraud Flow](/assets/Dataflow_Fraud_Demo_2026.json) with a [Custom NiFi 2.o Python Processor](/assets/NewTransactionGenerator.py) to deploy this flow in DataFlow.
 
 
 You can still deploy the original NiFi 1.x flow (with ExecuteScript) in a Nifi Data Hub or in DataFlow.  The setup should be same, you just need to provide the appropriate parameters.
@@ -122,7 +122,7 @@ Use HUE Importer to upload and import [Customer Data](/Assets/01_Customer_Data.c
 
 ```
 -- confirm data exists
-select * FROM hue__tmp_01_customer_data;
+select * FROM 01_customer_data;
 
 -- do some column type changes to match
 ALTER TABLE hue__tmp_01_customer_data CHANGE account_id account_id STRING;
@@ -133,7 +133,7 @@ PRIMARY KEY (account_id)
 PARTITION BY HASH PARTITIONS 16
 STORED AS KUDU
 TBLPROPERTIES ('kudu.num_tablet_replicas' = '3')
-AS select  *  from hue__tmp_01_customer_data;
+AS select  *  from 01_customer_data;
 
 -- confirm data exists
 select * from customers;
