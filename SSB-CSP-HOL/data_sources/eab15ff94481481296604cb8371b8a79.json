@@ -1,0 +1,13 @@
+{
+  "id" : "eab15ff94481481296604cb8371b8a79",
+  "name" : "Schema Registry",
+  "type" : "catalog",
+  "properties" : {
+    "table_filters" : [ ],
+    "catalog_type" : "cloudera-registry",
+    "kafka.provider.id" : "2598649da01c448ca3cc303d850f0f9c",
+    "registry.address" : "https://csp-hol-kafka-master0.se-sandb.a465-9q4k.cloudera.site:7790/api/v1",
+    "registry.ssl.enabled" : true
+  },
+  "custom_truststore" : false
+}
