@@ -150,4 +150,3 @@ HOL Lead and Breakout Room Leaders should import project and fully test ahead of
 You are now ready to get started on [Module 0: HOL Getting Started](module_0.md).
 
 ***
-
