@@ -71,12 +71,12 @@ txn2.ts,
 txn1.account_id as ACCOUNT_ID,
 txn1.transaction_id AS TRANSACTION_ID,
 txn2.transaction_id,
-txn1.amount as AMOUNT,
-txn1.lat AS LAT,
-txn1.lon AS LON,
-HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as distance
-FROM srm_txn1 as txn1
-INNER JOIN srm_txn2 as txn2
+cast(txn1.amount as STRING) as AMOUNT,
+cast(txn1.lat as STRING) AS LAT,
+cast(txn1.lon as STRING) AS LON,
+cast(HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as STRING) as distance
+FROM txn1
+INNER JOIN txn2
 on txn1.account_id=txn2.account_id
 where
 txn1.transaction_id <> txn2.transaction_id
@@ -85,7 +85,7 @@ AND txn1.ts < txn2.ts
 AND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1
 AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
 ) FRAUD
-JOIN `Kudu`.`default`.`srm_fraud.customers` cus
+JOIN `Kudu`.`default`.`default.customers` cus
 ON cus.account_id = FRAUD.ACCOUNT_ID
 ```
 
@@ -185,4 +185,3 @@ select card, sum(cast(amount as BIGINT)) from ${user_id}_fraud.`fraudulent_txn_i
 Congratulations, you made it to the end of the first Cloudera Sql Stream Builder Hands On Lab.  If you completed everything you should now be able to confirm your SSB Project looks very similar to full SSB-CSP-HOL Project.
 
 ![09.5 Intro to SSB](/Images/09.5_Intro_SSB.png)
-
