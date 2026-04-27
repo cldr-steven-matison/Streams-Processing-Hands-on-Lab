@@ -78,7 +78,7 @@ Now, let’s get our hands dirty!
 
 ## **Infrastructure deployment**
 
-In CDP Public Cloud, we've created a new environment called "hol-workshop" and deployed Data Hubs:
+In CDP Public Cloud, we've created a new environment and deployed Data Hubs:
 
  * Streams Messaging Data Hub (KAFKA): csp-hol-kafka
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
