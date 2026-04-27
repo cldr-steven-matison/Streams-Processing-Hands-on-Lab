@@ -28,16 +28,14 @@ During this session, we will create data sources, starting with simple SQL state
 
 ## References
 
-Check out Whats New in [Cloudera 7.3.1](https://docs.cloudera.com/runtime/7.3.1/public-release-notes/topics/rt-whats-new.html) 
+Check out Whats New in [Cloudera 7.3.2](https://docs.cloudera.com/cdp-private-cloud-base/7.3.2/private-release-notes/topics/rt-whats-new.html) 
 
-Check out Whats new in [Cloudera Streaming Analytics 1.14](https://docs.cloudera.com/csa/1.14.0/release-notes/topics/csa-what-new.html)
+Check out Whats new in [Cloudera Streaming Analytics 1.17](https://docs.cloudera.com/csa/latest/release-notes/topics/csa-what-new.html)
 
-Check SQL Stream Builder in [Cloudera Sql Stream Builder](https://docs.cloudera.com/csa/1.14.0/ssb-overview/topics/csa-ssb-key-features.html)
+Check SQL Stream Builder in [Cloudera Sql Stream Builder](https://docs.cloudera.com/csa/1.17.0/ssb-overview/topics/csa-ssb-intro.html)
 
-Check out the Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.14.0/index.html)
+Check out the Docs [Cloudera Streaming Analytics DOCS](https://docs.cloudera.com/csa/1.17.0/index.html)
 
- * [Sql Stream Builder](https://docs.cloudera.com/csa/1.14.0/ssb-overview/topics/csa-ssb-intro.html) 
- * [Cloudera Streaming Analytics](https://docs.cloudera.com/csa/1.14.0/index.html) 
  * [Apache Nifi](https://nifi.apache.org)
  * [Apache Kafka](https://kafka.apache.org)
  * [Apache Flink](https://flink.apache.org/) 
@@ -54,10 +52,10 @@ All the value of CDP and CDF can be delivered either OnPremise or on Public Clou
 The architecture uses:
 
 - [Cloudera DataFlow -Apache Nifi](https://docs.cloudera.com/dataflow/cloud/index.html) - for data ingestion. Apache Nifi collects in real-time transactional events and sends them to Apache Kafka brokers.
-- [Cloudera Streams Messaging -Apache Kafka](https://docs.cloudera.com/runtime/7.3.1/kafka-overview/topics/kafka-overview-intro.html) - for stream messaging. Apache Kafka will receive the transactional events from Apache Nifi and store them.
-- [Cloudera Streaming analytics -Apache Flink/SSB](https://docs.cloudera.com/csa/1.14.0/ssb-overview/topics/csa-ssb-intro.html) - for data processing. Cloudera offers Cloudera Stream Analytics(CSA) which is essentially Apache Flink + SQL Stream Builder (SSB). Apache Flink offers low-latency processing of unbounded data streams. It connects to different data sources such as Kafka topics providing real-time insights or detecting anomalies in streaming context. Streaming SQL Builder (SSB) provides a SQL layer that allows data analysts to rapidly experiment with streaming data without writing java code. SSB supports different data connectors: Apache Kafka, Apache Kudu, Apache Hive, Apache Iceberg, Schema Registry, and more.
-- [Cloudera Fast Storage Analytics -Apache Kudu](https://docs.cloudera.com/runtime/7.3.1/kudu-overview/topics/kudu-intro.html) - for storage of transactional events. Apache Kudu is a distributed, columnar storage, which offers "fast analytics on fast data". Thus, Apache Flink and Apache Kudu make a great match.
-- [Cloudera Data Warehouse -Apache Iceberg](https://docs.cloudera.com/runtime/7.3.1/iceberg-overview/topics/iceberg-overview.html) - for a powerful futureproof data warehouse.  Apache Iceberg also brings the great power of Time Travel to Apache Flink streaming data applications in SSB.
+- [Cloudera Streams Messaging -Apache Kafka](https://docs.cloudera.com/runtime/7.3.2/kafka-overview/topics/kafka-overview-intro.html) - for stream messaging. Apache Kafka will receive the transactional events from Apache Nifi and store them.
+- [Cloudera Streaming analytics -Apache Flink/SSB](https://docs.cloudera.com/csa/1.17.0/ssb-overview/topics/csa-ssb-intro.html) - for data processing. Cloudera offers Cloudera Stream Analytics(CSA) which is essentially Apache Flink + SQL Stream Builder (SSB). Apache Flink offers low-latency processing of unbounded data streams. It connects to different data sources such as Kafka topics providing real-time insights or detecting anomalies in streaming context. Streaming SQL Builder (SSB) provides a SQL layer that allows data analysts to rapidly experiment with streaming data without writing java code. SSB supports different data connectors: Apache Kafka, Apache Kudu, Apache Hive, Apache Iceberg, Schema Registry, and more.
+- [Cloudera Fast Storage Analytics -Apache Kudu](https://docs.cloudera.com/runtime/7.3.2/kudu-overview/topics/kudu-intro.html) - for storage of transactional events. Apache Kudu is a distributed, columnar storage, which offers "fast analytics on fast data". Thus, Apache Flink and Apache Kudu make a great match.
+- [Cloudera Data Warehouse -Apache Iceberg](https://docs.cloudera.com/runtime/7.3.2/iceberg-overview/topics/iceberg-overview.html) - for a powerful futureproof data warehouse.  Apache Iceberg also brings the great power of Time Travel to Apache Flink streaming data applications in SSB.
 
 
 The picture below depicts a high level architecture of an Event Driven Fraud Detection with SSB:
@@ -80,7 +78,7 @@ Now, let’s get our hands dirty!
 
 ## **Infrastructure deployment**
 
-In CDP Public Cloud, we've created a new environment called "hol-workshop" and deployed Data Hubs:
+In CDP Public Cloud, we've created a new environment and deployed Data Hubs:
 
  * Streams Messaging Data Hub (KAFKA): csp-hol-kafka
  * Streams Analytics Data Hub (FLINK/SSB) : csp-hol-flink
@@ -124,7 +122,7 @@ The NiFi Data Flow will also stream a fraudulent transaction with the same accou
 
 ```
 
-The generated transactional events will be ingested in Apache Kafka.
+The transactions are generated in custom python processor in Apache Nifi and delivered to topics Apache Kafka.
 
 
 To kick things off go to [Module 0: HOL Getting Started](module_0.md).
