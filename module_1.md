@@ -181,8 +181,8 @@ SELECT
       txn1.lon AS LON,
       HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) as distance
 
-FROM  txn1
-INNER JOIN  txn2
+FROM txn1
+INNER JOIN txn2
       on txn1.account_id=txn2.account_id
 where
       txn1.transaction_id <> txn2.transaction_id
@@ -224,7 +224,7 @@ AND txn1.ts < txn2.ts
 AND HAVETOKM(txn1.lat,txn1.lon,txn2.lat,txn2.lon) > 1
 AND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time
 ) FRAUD
-JOIN `Kudu`.`default_database`.`default.customers` cus
+JOIN `Kudu`.`default`.`default.customers` cus
 ON cus.account_id = FRAUD.ACCOUNT_ID
 ```
 We can see from the output that all the fraudulent transactions are displayed in the SSB console:
