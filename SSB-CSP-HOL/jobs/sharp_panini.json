@@ -1,9 +1,9 @@
 {
-  "job_name" : "blissful_knuth",
+  "job_name" : "sharp_panini",
   "api_endpoints" : [ ],
-  "sql" : "select * from txn1;",
+  "sql" : "select * from txn_fraud;",
   "mv_config" : {
-    "name" : "blissful_knuth",
+    "name" : "sharp_panini",
     "retention" : 300,
     "min_row_retention_count" : 0,
     "recreate" : false,
@@ -18,7 +18,7 @@
     "enabled" : false
   },
   "runtime_config" : {
-    "execution_mode" : "APPLICATION",
+    "execution_mode" : "SESSION",
     "runtime_mode" : "STREAMING",
     "parallelism" : 1,
     "sample_interval" : 0,

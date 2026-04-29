@@ -21,7 +21,7 @@
     "execution_mode" : "SESSION",
     "runtime_mode" : "STREAMING",
     "parallelism" : 1,
-    "sample_interval" : 1000,
+    "sample_interval" : 0,
     "sample_count" : 100,
     "window_size" : 100,
     "start_with_savepoint" : false,
