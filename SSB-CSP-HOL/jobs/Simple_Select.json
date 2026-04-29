@@ -1,7 +1,7 @@
 {
   "job_name" : "Simple_Select",
   "api_endpoints" : [ ],
-  "sql" : "--test Execute Selections\nselect * from txn1;\nselect * from txn2;",
+  "sql" : "--test Execute Selections\nselect * from txn1;\nselect * from txn2;\nselect * from txn_fraud;",
   "mv_config" : {
     "name" : "Simple_Select",
     "retention" : 300,
@@ -27,24 +27,5 @@
     "start_with_savepoint" : false,
     "savepoint_directory_path" : null,
     "log_config" : null
-  },
-  "kubernetes_config" : {
-    "kubernetes_deployment_mode" : "NATIVE",
-    "restart_failed_job" : false,
-    "job_manager_replicas" : 1,
-    "job_manager_resource_config" : {
-      "cpu_request" : null,
-      "memory_request" : null,
-      "cpu_limit" : null,
-      "memory_limit" : null,
-      "ephemeral_storage" : null
-    },
-    "task_manager_resource_config" : {
-      "cpu_request" : null,
-      "memory_request" : null,
-      "cpu_limit" : null,
-      "memory_limit" : null,
-      "ephemeral_storage" : null
-    }
   }
 }
