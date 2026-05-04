@@ -1,0 +1,50 @@
+{
+  "job_name" : "Fraud_Demo_K8s",
+  "api_endpoints" : [ ],
+  "sql" : "--INSERT INTO fraud_alerts\nSELECT\ntxn1.account_id,\ntxn1.transaction_id AS original_id,\ntxn2.transaction_id AS fraudulent_id,\n-- Calculation: sqrt((lat2-lat1)^2 + (lon2-lon1)^2)\nSQRT(\nPOWER(CAST(txn1.lat AS DOUBLE) - CAST(txn2.lat AS DOUBLE), 2) +\nPOWER(CAST(txn1.lon AS DOUBLE) - CAST(txn2.lon AS DOUBLE), 2)\n) AS spatial_diff\nFROM txn1\nINNER JOIN txn2 ON txn1.account_id = txn2.account_id\nWHERE txn1.transaction_id <> txn2.transaction_id\n-- The 10-minute \"impossible travel\" window\nAND txn2.event_time BETWEEN txn1.event_time - INTERVAL '10' MINUTE AND txn1.event_time\n-- The Validation: Flag anything where the coordinate delta is > 0.01 (approx 1.1km)\nAND SQRT(\nPOWER(CAST(txn1.lat AS DOUBLE) - CAST(txn2.lat AS DOUBLE), 2) +\nPOWER(CAST(txn1.lon AS DOUBLE) - CAST(txn2.lon AS DOUBLE), 2)\n) > 0.01;",
+  "mv_config" : {
+    "name" : "Fraud_Demo_K8s",
+    "retention" : 300,
+    "min_row_retention_count" : 0,
+    "recreate" : false,
+    "key_column_name" : null,
+    "column_indices_disabled" : false,
+    "indexed_columns" : [ ],
+    "not_indexed_columns" : [ ],
+    "api_key" : null,
+    "ignore_nulls" : false,
+    "require_restart" : false,
+    "batch_size" : 0,
+    "enabled" : false
+  },
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "runtime_mode" : "STREAMING",
+    "parallelism" : 1,
+    "sample_interval" : 0,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "savepoint_directory_path" : null,
+    "log_config" : null
+  },
+  "kubernetes_config" : {
+    "kubernetes_deployment_mode" : "NATIVE",
+    "restart_failed_job" : false,
+    "job_manager_replicas" : 1,
+    "job_manager_resource_config" : {
+      "cpu_request" : null,
+      "memory_request" : null,
+      "cpu_limit" : null,
+      "memory_limit" : null,
+      "ephemeral_storage" : null
+    },
+    "task_manager_resource_config" : {
+      "cpu_request" : null,
+      "memory_request" : null,
+      "cpu_limit" : null,
+      "memory_limit" : null,
+      "ephemeral_storage" : null
+    }
+  }
+}
