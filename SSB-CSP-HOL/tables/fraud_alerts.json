@@ -1,0 +1,15 @@
+{
+  "metadata" : {
+    "schema.3.data-type" : "DOUBLE",
+    "schema.2.data-type" : "VARCHAR(2147483647)",
+    "schema.3.name" : "spatial_diff",
+    "schema.0.data-type" : "VARCHAR(2147483647)",
+    "schema.2.name" : "fraudulent_id",
+    "schema.1.name" : "original_id",
+    "schema.0.name" : "account_id",
+    "schema.1.data-type" : "VARCHAR(2147483647)"
+  },
+  "type" : "ssb",
+  "table_name" : "fraud_alerts",
+  "transform_code_b64_encoded" : false
+}
