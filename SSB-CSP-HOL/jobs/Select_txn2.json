@@ -1,0 +1,31 @@
+{
+  "job_name" : "Select_txn2",
+  "api_endpoints" : [ ],
+  "sql" : "select * from txn2;",
+  "mv_config" : {
+    "name" : "Select_txn2",
+    "retention" : 300,
+    "min_row_retention_count" : 0,
+    "recreate" : false,
+    "key_column_name" : null,
+    "column_indices_disabled" : false,
+    "indexed_columns" : [ ],
+    "not_indexed_columns" : [ ],
+    "api_key" : null,
+    "ignore_nulls" : false,
+    "require_restart" : false,
+    "batch_size" : 0,
+    "enabled" : false
+  },
+  "runtime_config" : {
+    "execution_mode" : "SESSION",
+    "runtime_mode" : "STREAMING",
+    "parallelism" : 1,
+    "sample_interval" : 1000,
+    "sample_count" : 100,
+    "window_size" : 100,
+    "start_with_savepoint" : false,
+    "savepoint_directory_path" : null,
+    "log_config" : null
+  }
+}
